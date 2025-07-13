@@ -7,7 +7,6 @@ const App = () => {
             <NavBar />
             <main className="px-4 sm:px-6">
                 <Highlights />
-                {/*<Waitlist/>*/}
             </main>
         </div>
     );
