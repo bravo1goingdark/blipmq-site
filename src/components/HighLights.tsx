@@ -1,14 +1,33 @@
 import { motion } from 'motion/react';
 import { IconCard } from './IconCard';
-import { useState } from 'react';
+import {type ChangeEvent, useState} from 'react';
 import { Feather, Rocket, Plug, ShieldCheck } from 'lucide-react';
+import * as React from "react";
 
 export function Highlights() {
     const [email, setEmail] = useState('');
+    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Email submitted:', email);
+        setStatus('loading');
+
+        try {
+            const res = await fetch('https://submit-form.com/xRA6HaiEN', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email }),
+            });
+
+            if (res.ok) {
+                setStatus('success');
+                setEmail('');
+            } else {
+                setStatus('error');
+            }
+        } catch (err) {
+            setStatus('error');
+        }
     };
 
     return (
@@ -35,17 +54,19 @@ export function Highlights() {
                 </motion.p>
 
                 <motion.form
-                    onSubmit={handleSubmit}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.6 }}
+                    action="https://submit-form.com/xRA6HaiEN"
+                    method="POST"
                     className="flex flex-col sm:flex-row items-center gap-3 mb-4"
                 >
                     <input
                         type="email"
+                        name="email"
                         required
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={(e : ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                         placeholder="Enter your email"
                         className="w-full sm:w-64 px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
                     />
@@ -57,33 +78,23 @@ export function Highlights() {
                     </button>
                 </motion.form>
 
-                <p className="text-sm text-gray-500">
-                    We respect your inbox. <strong>No spam, ever.</strong>
-                </p>
+
+                {status === 'success' && (
+                    <p className="text-sm text-green-600">Thanks for joining the waitlist!</p>
+                )}
+                {status === 'error' && (
+                    <p className="text-sm text-red-600">Something went wrong. Please try again.</p>
+                )}
+                {status !== 'success' && (
+                    <p className="text-sm text-gray-500">We respect your inbox. <strong>No spam, ever.</strong></p>
+                )}
             </div>
 
-            {/* Features Section with Icons */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <IconCard
-                    delay={0}
-                    title="Ultra-lightweight"
-                    icon={<Feather className="w-12 h-12 text-indigo-500" />}
-                />
-                <IconCard
-                    delay={0.2}
-                    title="Blazing-fast"
-                    icon={<Rocket className="w-12 h-12 text-yellow-400" />}
-                />
-                <IconCard
-                    delay={0.4}
-                    title="Plug & Play for Microservices"
-                    icon={<Plug className="w-12 h-12 text-pink-500" />}
-                />
-                <IconCard
-                    delay={0.6}
-                    title="Secure, Scalable, Reliable"
-                    icon={<ShieldCheck className="w-12 h-12 text-green-500" />}
-                />
+                <IconCard delay={0} title="Ultra-lightweight" icon={<Feather className="w-12 h-12 text-indigo-500" />} />
+                <IconCard delay={0.2} title="Blazing-fast" icon={<Rocket className="w-12 h-12 text-yellow-400" />} />
+                <IconCard delay={0.4} title="Plug & Play for Microservices" icon={<Plug className="w-12 h-12 text-pink-500" />} />
+                <IconCard delay={0.6} title="Secure, Scalable, Reliable" icon={<ShieldCheck className="w-12 h-12 text-green-500" />} />
             </div>
         </section>
     );
