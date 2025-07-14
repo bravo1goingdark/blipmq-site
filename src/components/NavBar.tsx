@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import ComingSoonModal from './ComingSoonModal';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { trackEvent } from '../utils/analytics';
 
 const NavBar = () => {
@@ -12,11 +12,12 @@ const NavBar = () => {
     return (
         <>
             <nav className="sticky top-0 z-50 w-full bg-white/70 backdrop-blur-md border-b border-gray-200">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+                <div className="w-full px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
                     <div className="text-2xl font-bold text-gray-900 tracking-tight">
                         <Link to="/">blipmq</Link>
                     </div>
 
+                    {/* Desktop Nav Links */}
                     <div className="hidden md:flex space-x-8 text-sm font-medium">
                         <Link
                             to="/features"
@@ -47,6 +48,7 @@ const NavBar = () => {
                         </a>
                     </div>
 
+                    {/* Desktop CTA */}
                     <div className="hidden md:block">
                         <button
                             onClick={() => {
@@ -59,6 +61,7 @@ const NavBar = () => {
                         </button>
                     </div>
 
+                    {/* Mobile Menu Toggle */}
                     <button
                         className="md:hidden text-gray-700"
                         onClick={() => setIsOpen(!isOpen)}
@@ -67,6 +70,7 @@ const NavBar = () => {
                     </button>
                 </div>
 
+                {/* Mobile Menu */}
                 {isOpen && (
                     <div className="md:hidden px-4 pb-4 pt-2 bg-white/90 backdrop-blur-md border-t border-gray-200 text-sm font-medium space-y-2">
                         <Link

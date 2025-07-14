@@ -1,7 +1,8 @@
-import type {JSX} from "react";
+import type {LucideIcon} from "lucide-react";
 
 export interface Feature {
     title: string;
     description: string;
-    icon: JSX.Element;
+    icon: LucideIcon;
+    color: string;
 }

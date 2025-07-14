@@ -1,12 +1,11 @@
 import {motion} from 'motion/react';
 import {IconCard} from './IconCard';
-import {type ChangeEvent, useEffect, useState} from 'react';
+import {type ChangeEvent, useState} from 'react';
 import {Feather, Rocket, Plug, ShieldCheck, X} from 'lucide-react';
 import * as React from "react";
 import Lottie from "lottie-react";
 import CheckBox from "../assets/animation/Checkbox Animation.json";
 import {InProgressCarousel} from "./InProgressCarousel.tsx";
-import {trackEvent} from "../utils/analytics.ts";
 
 export function Highlights() {
     const [email, setEmail] = useState('');
@@ -14,14 +13,9 @@ export function Highlights() {
     const [showModal, setShowModal] = useState(false);
     const [position, setPosition] = useState<number | null>(null);
 
-    useEffect(() => {
-        trackEvent("view", "section", "highlights");
-    }, []);
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setStatus('loading');
-
         const URL = "https://script.google.com/macros/s/AKfycbxQKDu95_PkfMrs571Nh-XHPQczY3PSqBjoIIa7nSYP-O9bYtaMHz_HlXuNUPa7Q_rs/exec";
 
         try {
@@ -37,16 +31,11 @@ export function Highlights() {
                 setStatus('success');
                 setEmail('');
                 setShowModal(true);
-
-                trackEvent("submit", "form", "early_access_email_success");
-                trackEvent("modal", "view", "waitlist_success_modal");
             } else {
                 setStatus('error');
-                trackEvent("submit", "form", "early_access_email_error");
             }
         } catch (err) {
             setStatus('error');
-            trackEvent("submit", "form", "early_access_email_exception");
         }
     };
 
@@ -64,10 +53,7 @@ export function Highlights() {
                     <div className="bg-white px-6 py-5 rounded-xl shadow-lg text-center max-w-sm w-full relative">
                         <button
                             className="absolute top-3 right-3 text-gray-400 hover:text-gray-700"
-                            onClick={() => {
-                                setShowModal(false);
-                                trackEvent("modal", "close", "waitlist_success_modal");
-                            }}
+                            onClick={() => setShowModal(false)}
                         >
                             <X className="w-4 h-4"/>
                         </button>
@@ -152,7 +138,10 @@ export function Highlights() {
                               icon={<ShieldCheck className="w-12 h-12 text-green-500"/>}/>
                 </div>
                 <InProgressCarousel/>
+
             </div>
+
+
         </section>
     );
 }

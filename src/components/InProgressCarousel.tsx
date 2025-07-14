@@ -1,10 +1,11 @@
 import { features } from "../utils/feature.tsx";
 import { motion } from "motion/react";
 import Lottie from "lottie-react";
-import DevAnimation from "../assets/animation/Error cone.json"; // replace with actual path
+import DevAnimation from "../assets/animation/Error cone.json";
 
 export function InProgressCarousel() {
-    const index: number = 0;
+    const index = 0;
+    const featureTitle : string = features[index]?.title || "Loading...";
 
     return (
         <motion.div
@@ -22,7 +23,7 @@ export function InProgressCarousel() {
                     Currently In Development
                 </span>
                 <h4 className="text-base font-bold text-gray-900 underline">
-                    {features[index].title}
+                    {featureTitle}
                 </h4>
             </div>
         </motion.div>
