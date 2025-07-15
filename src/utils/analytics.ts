@@ -12,3 +12,5 @@ export const trackEvent = (
         label,
     });
 };
+
+export const URL = "https://script.google.com/macros/s/AKfycbxQKDu95_PkfMrs571Nh-XHPQczY3PSqBjoIIa7nSYP-O9bYtaMHz_HlXuNUPa7Q_rs/exec";

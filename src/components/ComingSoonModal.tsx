@@ -1,11 +1,11 @@
 import {X} from 'lucide-react';
 import * as React from "react";
-import Lottie from "lottie-react";
 import Rocket from "../assets/animation/Rocket in space-l5VfN.json";
 import type {Props} from "../@types/icons.ts";
+import Lottie from "lottie-react"
 
 
-const ComingSoonModal: React.FC<Props> = ({onClose}) => {
+const ComingSoonModal: React.FC<Props> = ({onClose}: Props) => {
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
             <div className="bg-white px-6 py-6 rounded-2xl shadow-xl text-center max-w-sm w-full relative">
@@ -16,9 +16,10 @@ const ComingSoonModal: React.FC<Props> = ({onClose}) => {
                     <X className="w-5 h-5"/>
                 </button>
 
+
                 <Lottie
-                    loop={true}
                     animationData={Rocket}
+                    loop={true}
                     style={{height: '180px', width: '180px', margin: '0 auto'}}
                 />
 

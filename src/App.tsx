@@ -1,19 +1,25 @@
+import { lazy, Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar.tsx";
-import {Highlights} from "./components/HighLights.tsx";
-import {EssentialFeatures} from "./components/Features.tsx";
-import {Routes, Route} from "react-router-dom";
 import usePageTracking from "./utils/usePageTracking.ts";
+
+// Lazy-loaded components
+const Highlights = lazy(() => import("./components/HighLights.tsx"));
+const EssentialFeatures = lazy(() => import("./components/Features.tsx"));
 
 const App = () => {
     usePageTracking();
+
     return (
         <div className="min-h-screen w-full overflow-x-hidden bg-white text-gray-900">
-            <NavBar/>
+            <NavBar />
             <main className="px-4 sm:px-6">
-                <Routes>
-                    <Route path="/" element={<Highlights/>}/>
-                    <Route path="/features" element={<EssentialFeatures/>}/>
-                </Routes>
+                <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+                    <Routes>
+                        <Route path="/" element={<Highlights />} />
+                        <Route path="/features" element={<EssentialFeatures />} />
+                    </Routes>
+                </Suspense>
             </main>
         </div>
     );

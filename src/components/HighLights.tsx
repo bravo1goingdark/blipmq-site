@@ -1,14 +1,18 @@
 import {motion} from 'motion/react';
 import {IconCard} from './IconCard';
-import {type ChangeEvent, useState} from 'react';
+import {type ChangeEvent, useState, useEffect} from 'react';
 import {Feather, Rocket, Plug, ShieldCheck, X} from 'lucide-react';
 import * as React from "react";
 import Lottie from "lottie-react";
 import CheckBox from "../assets/animation/Checkbox Animation-bJszt.json";
 import {InProgressCarousel} from "./InProgressCarousel.tsx";
+import {fetchTotalJoined , animateCountUp} from "../utils/mount.ts";
+import {URL} from "../utils/analytics.ts"
 
-export function Highlights() {
+export default function Highlights() {
     const [email, setEmail] = useState<string>('');
+    const [totalJoined, setTotalJoined] = useState<number | null>(null);
+    const [displayCount, setDisplayCount] = useState(0);
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [showModal, setShowModal] = useState(false);
     const [position, setPosition] = useState<number | null>(null);
@@ -16,10 +20,10 @@ export function Highlights() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setStatus('loading');
-        const URL = "https://script.google.com/macros/s/AKfycbxQKDu95_PkfMrs571Nh-XHPQczY3PSqBjoIIa7nSYP-O9bYtaMHz_HlXuNUPa7Q_rs/exec";
+
 
         try {
-            const res : Response = await fetch(URL, {
+            const res: Response = await fetch(URL, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 body: new URLSearchParams({email}).toString(),
@@ -34,10 +38,24 @@ export function Highlights() {
             } else {
                 setStatus('error');
             }
+
         } catch (err) {
             setStatus('error');
         }
     };
+
+    useEffect(() => {
+        const cached : string | null = localStorage.getItem("blipmq_total");
+        const fallback : number = cached ? parseInt(cached) : 100;
+
+        setTotalJoined(fallback);
+        animateCountUp(fallback, setDisplayCount);
+
+        fetchTotalJoined(URL, setTotalJoined, setDisplayCount).then();
+    }, []);
+
+
+
 
     return (
         <section
@@ -79,24 +97,36 @@ export function Highlights() {
                     className="text-4xl md:text-5xl font-extrabold leading-tight mb-6"
                 >
                     Think, send,<br/>
-                    and stream messages <span className="text-indigo-600">lightning fast⚡</span>
+                    and stream messages <span className="text-indigo-600">lightning fast⚡<span
+                    className="-ml-3">🦀</span></span>
                 </motion.h2>
 
                 <motion.p
                     initial={{opacity: 0, y: 20}}
                     animate={{opacity: 1, y: 0}}
                     transition={{delay: 0.2, duration: 0.6}}
-                    className="text-lg text-gray-600 mb-6"
+                    className="text-lg text-gray-600 mb-4"
                 >
-                    BlipMQ combines raw speed, memory efficiency, and fault tolerance in a zero-bloat message broker for microservices. Whether you're shipping logs, events, or state,<strong> BlipMQ delivers with minimal overhead and maximal control.</strong>
+                    BlipMQ combines raw speed, memory efficiency, and fault tolerance in a zero-bloat message broker for
+                    microservices. Whether you're shipping logs, events, or state,<strong> BlipMQ delivers with minimal
+                    overhead and maximal control.</strong>
                 </motion.p>
+                {totalJoined !== null && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="mb-2 px-2 text-sm font-bold text-cyan-600"
+                    >
+                        #{displayCount.toLocaleString()} developers have already joined 🚀
+                    </motion.div>
+                )}
 
                 <motion.form
                     onSubmit={handleSubmit}
                     initial={{opacity: 0, y: 20}}
                     animate={{opacity: 1, y: 0}}
                     transition={{delay: 0.4, duration: 0.6}}
-                    className="flex flex-col sm:flex-row items-center gap-3 mb-4"
+                    className="flex flex-col sm:flex-row items-center gap-3 mb-3"
                 >
                     <input
                         type="email"
@@ -119,11 +149,14 @@ export function Highlights() {
                 {status === 'error' && (
                     <p className="text-sm text-red-600">Something went wrong. Please try again.</p>
                 )}
+
+
                 {status !== 'success' && (
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm px-2 text-gray-500">
                         We respect your inbox. <strong>No spam, ever.</strong>
                     </p>
                 )}
+
             </div>
 
             <div className="w-full flex flex-col gap-6 mt-6">

@@ -3,7 +3,7 @@ import {motion} from "motion/react";
 import {useEffect} from "react";
 import {trackEvent} from "../utils/analytics.ts";
 
-export function EssentialFeatures() {
+export default function EssentialFeatures() {
     useEffect(() => {
         trackEvent("view", "section", "essential_features");
     }, []);

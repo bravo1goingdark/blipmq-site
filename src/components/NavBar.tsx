@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import {useState} from 'react';
+import {Menu, X} from 'lucide-react';
 import ComingSoonModal from './ComingSoonModal';
-import { Link } from 'react-router-dom';
-import { trackEvent } from '../utils/analytics';
+import {Link} from 'react-router-dom';
+import {trackEvent} from '../utils/analytics';
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -66,13 +66,14 @@ const NavBar = () => {
                         className="md:hidden text-gray-700"
                         onClick={() => setIsOpen(!isOpen)}
                     >
-                        {isOpen ? <X size={24} /> : <Menu size={24} />}
+                        {isOpen ? <X size={24}/> : <Menu size={24}/>}
                     </button>
                 </div>
 
                 {/* Mobile Menu */}
                 {isOpen && (
-                    <div className="md:hidden px-4 pb-4 pt-2 bg-white/90 backdrop-blur-md border-t border-gray-200 text-sm font-medium space-y-2">
+                    <div
+                        className="md:hidden px-4 pb-4 pt-2 bg-white/90 backdrop-blur-md border-t border-gray-200 text-sm font-medium space-y-2">
                         <Link
                             to="/features"
                             onClick={() => trackEvent("click", "navigation", "features_link_mobile")}
@@ -115,8 +116,8 @@ const NavBar = () => {
             </nav>
 
             {/* Modals */}
-            {showDemoModal && <ComingSoonModal onClose={() => setShowDemoModal(false)} />}
-            {showComingSoonModal && <ComingSoonModal onClose={() => setShowComingSoonModal(false)} />}
+            {showDemoModal && <ComingSoonModal onClose={() => setShowDemoModal(false)}/>}
+            {showComingSoonModal && <ComingSoonModal onClose={() => setShowComingSoonModal(false)}/>}
         </>
     );
 };

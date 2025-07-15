@@ -15,8 +15,10 @@ export default defineConfig({
                 },
             },
         },
+        minify : true,
+        target : 'es2018'
     },
     preview : {
         allowedHosts : true
-    }
+    },
 })

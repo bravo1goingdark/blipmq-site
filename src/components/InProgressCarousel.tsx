@@ -1,8 +1,7 @@
 import { features } from "../utils/feature.tsx";
 import { motion } from "motion/react";
-import Lottie from "lottie-react";
 import DevAnimation from "../assets/animation/Error cone-jeYB8.json";
-
+import Lottie from "lottie-react";
 export function InProgressCarousel() {
     const index = 0;
     const featureTitle : string = features[index]?.title || "Loading...";
