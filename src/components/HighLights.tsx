@@ -160,18 +160,31 @@ export default function Highlights() {
             </div>
 
             <div className="w-full flex flex-col gap-6 mt-6">
+                <motion.h3
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.15, duration: 0.4 }}
+                    className="text-center text-sm md:text-2xl font-bold tracking-tight text-cyan-800 mb-2"
+                >
+                    Unlock Built-in Superpowers  🧰
+                </motion.h3>
+
+
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <IconCard delay={0} title="Ultra-lightweight"
-                              icon={<Feather className="w-12 h-12 text-indigo-500"/>}/>
-                    <IconCard delay={0.2} title="Blazing-fast" icon={<Rocket className="w-12 h-12 text-yellow-400"/>}/>
+                              icon={<Feather className="w-12 h-12 text-indigo-500" />} />
+                    <IconCard delay={0.2} title="Blazing-fast"
+                              icon={<Rocket className="w-12 h-12 text-yellow-400" />} />
                     <IconCard delay={0.4} title="Plug & Play for Microservices"
-                              icon={<Plug className="w-12 h-12 text-pink-500"/>}/>
+                              icon={<Plug className="w-12 h-12 text-pink-500" />} />
                     <IconCard delay={0.6} title="Secure, Scalable, Reliable"
-                              icon={<ShieldCheck className="w-12 h-12 text-green-500"/>}/>
+                              icon={<ShieldCheck className="w-12 h-12 text-green-500" />} />
                 </div>
-                <InProgressCarousel/>
 
+                <InProgressCarousel />
             </div>
+
 
 
         </section>

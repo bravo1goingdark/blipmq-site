@@ -3,10 +3,9 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar.tsx";
 import usePageTracking from "./utils/usePageTracking.ts";
 
-// Lazy-loaded components
 const Highlights = lazy(() => import("./components/HighLights.tsx"));
 const EssentialFeatures = lazy(() => import("./components/Features.tsx"));
-
+const Footer = lazy(() => import('./components/Footer.tsx'))
 const App = () => {
     usePageTracking();
 
@@ -21,6 +20,7 @@ const App = () => {
                     </Routes>
                 </Suspense>
             </main>
+            <Footer />
         </div>
     );
 };

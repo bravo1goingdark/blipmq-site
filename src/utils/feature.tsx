@@ -1,4 +1,3 @@
-// utils/feature.tsx
 import {
     TerminalSquare,
     History,
@@ -6,6 +5,9 @@ import {
     Plug,
     Clock3,
     LayoutTemplate,
+    ServerCog,
+    ShieldCheck,
+    Rocket,
 } from "lucide-react";
 
 import type { Feature } from "../@types/feature";
@@ -46,5 +48,23 @@ export const features: Feature[] = [
         description: "Single binary, Dockerfile, config via env/files, and systemd unit for streamlined ops.",
         icon: LayoutTemplate,
         color: "text-gray-800",
+    },
+    {
+        title: "Observability",
+        description: "Built-in metrics endpoints and structured logs for easy monitoring.",
+        icon: ServerCog,
+        color: "text-red-500",
+    },
+    {
+        title: "Security Best Practices",
+        description: "Isolated message spaces, per-client access restrictions, and no PII stored.",
+        icon: ShieldCheck,
+        color: "text-emerald-600",
+    },
+    {
+        title: "Blazing Performance",
+        description: "Optimized in Rust for low-latency, high-throughput messaging.",
+        icon: Rocket,
+        color: "text-orange-600",
     },
 ];
