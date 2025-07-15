@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import {lazy, useEffect, useState} from 'react';
 import { Menu, X } from 'lucide-react';
-import ComingSoonModal from './ComingSoonModal';
+const ComingSoonModal = lazy(() => import("../components/ComingSoonModal.tsx"));
 import { Link } from 'react-router-dom';
 import { trackEvent } from '../utils/analytics';
 import { motion, AnimatePresence } from 'motion/react';
