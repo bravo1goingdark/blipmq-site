@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 import { trackEvent } from '../utils/analytics';
 
 const NavBar = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [showDemoModal, setShowDemoModal] = useState(false);
-    const [showComingSoonModal, setShowComingSoonModal] = useState(false);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [showDemoModal, setShowDemoModal] = useState<boolean>(false);
+    const [showComingSoonModal, setShowComingSoonModal] = useState<boolean>(false);
 
     return (
         <>
@@ -17,7 +17,7 @@ const NavBar = () => {
                         <Link to="/">blipmq</Link>
                     </div>
 
-                    {/* Desktop Nav Links */}
+
                     <div className="hidden md:flex space-x-8 text-sm font-medium">
                         <Link
                             to="/features"

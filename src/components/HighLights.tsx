@@ -4,11 +4,11 @@ import {type ChangeEvent, useState} from 'react';
 import {Feather, Rocket, Plug, ShieldCheck, X} from 'lucide-react';
 import * as React from "react";
 import Lottie from "lottie-react";
-import CheckBox from "../assets/animation/Checkbox Animation.json";
+import CheckBox from "../assets/animation/Checkbox Animation-bJszt.json";
 import {InProgressCarousel} from "./InProgressCarousel.tsx";
 
 export function Highlights() {
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState<string>('');
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [showModal, setShowModal] = useState(false);
     const [position, setPosition] = useState<number | null>(null);
@@ -19,7 +19,7 @@ export function Highlights() {
         const URL = "https://script.google.com/macros/s/AKfycbxQKDu95_PkfMrs571Nh-XHPQczY3PSqBjoIIa7nSYP-O9bYtaMHz_HlXuNUPa7Q_rs/exec";
 
         try {
-            const res = await fetch(URL, {
+            const res : Response = await fetch(URL, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 body: new URLSearchParams({email}).toString(),
@@ -88,8 +88,7 @@ export function Highlights() {
                     transition={{delay: 0.2, duration: 0.6}}
                     className="text-lg text-gray-600 mb-6"
                 >
-                    BlipMQ simplifies real-time communication between microservices and distributed systems with a
-                    lightweight, blazing-fast broker that just works — no complex setup, no compromises.
+                    BlipMQ combines raw speed, memory efficiency, and fault tolerance in a zero-bloat message broker for microservices. Whether you're shipping logs, events, or state,<strong> BlipMQ delivers with minimal overhead and maximal control.</strong>
                 </motion.p>
 
                 <motion.form

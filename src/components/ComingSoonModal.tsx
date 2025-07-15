@@ -1,7 +1,7 @@
 import {X} from 'lucide-react';
 import * as React from "react";
 import Lottie from "lottie-react";
-import Rocket from "../assets/animation/Rocket in space.json";
+import Rocket from "../assets/animation/Rocket in space-l5VfN.json";
 import type {Props} from "../@types/icons.ts";
 
 

@@ -1,7 +1,7 @@
 import { features } from "../utils/feature.tsx";
 import { motion } from "motion/react";
 import Lottie from "lottie-react";
-import DevAnimation from "../assets/animation/Error cone.json";
+import DevAnimation from "../assets/animation/Error cone-jeYB8.json";
 
 export function InProgressCarousel() {
     const index = 0;
