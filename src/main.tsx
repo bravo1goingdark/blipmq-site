@@ -11,7 +11,7 @@ ReactGA.send("pageview");
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <BrowserRouter basename="/blipmq-site">
+        <BrowserRouter >
             <App/>
         </BrowserRouter>
     </StrictMode>,

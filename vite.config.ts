@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-    base: "/blipmq-site",
     plugins: [react(), tailwindcss()],
+    base: '/',
     build: {
         rollupOptions: {
             output: {
