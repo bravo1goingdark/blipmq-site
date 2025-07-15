@@ -4,7 +4,7 @@ export const fetchTotalJoined = async (
     setDisplayCount: (v: number) => void
 ) => {
     try {
-        const res = await fetch(url);
+        const res : Response = await fetch(url);
         const data = await res.json();
         const realTotal = data.total ?? 0;
 
@@ -19,17 +19,17 @@ export const fetchTotalJoined = async (
 
 export const animateCountUp = (target: number, setDisplayCount: (v: number) => void) => {
     const duration = 800;
-    const startTime = performance.now();
+    const startTime : number = performance.now();
 
-    const step = (now: number) => {
-        const progress = Math.min((now - startTime) / duration, 1);
-        const count = Math.floor(progress * target);
+    const step = (now: number) : void => {
+        const progress : number = Math.min((now - startTime) / duration, 1);
+        const count : number = Math.floor(progress * target);
         setDisplayCount(count);
 
         if (progress < 1) {
             requestAnimationFrame(step);
         } else {
-            setDisplayCount(target); // Snap to final
+            setDisplayCount(target);
         }
     };
 

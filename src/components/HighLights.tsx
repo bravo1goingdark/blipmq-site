@@ -159,7 +159,7 @@ export default function Highlights() {
 
             </div>
 
-            <div className="w-full flex flex-col gap-6 mt-6">
+            <div className="w-full flex flex-col gap-4 mt-6">
                 <motion.h3
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}

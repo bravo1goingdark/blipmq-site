@@ -76,7 +76,11 @@ const NavBar = () => {
                         className="md:hidden px-4 pb-4 pt-2 bg-white/90 backdrop-blur-md border-t border-gray-200 text-sm font-medium space-y-2">
                         <Link
                             to="/features"
-                            onClick={() => trackEvent("click", "navigation", "features_link_mobile")}
+                            onClick={() => {
+                                trackEvent("click", "navigation", "features_link_mobile");
+                                setIsOpen(!isOpen);
+                            }}
+
                             className="block px-3 py-2 rounded-md text-gray-700 hover:text-black hover:bg-gray-100 transition"
                         >
                             Features
