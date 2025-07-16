@@ -13,7 +13,7 @@ export const InProgressCarousel = () => {
 
     return (
         <motion.div
-            className="w-full flex justify-center -ml-6 mt-3"
+            className="w-full flex justify-center -ml-6 mt-1"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}

@@ -171,7 +171,7 @@ export default function Highlights() {
 
 
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 -mt-6">
                     <IconCard delay={0} title="Ultra-lightweight"
                               icon={<Feather className="w-12 h-12 text-indigo-500" />} />
                     <IconCard delay={0.2} title="Blazing-fast"
