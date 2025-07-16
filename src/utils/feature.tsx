@@ -44,12 +44,6 @@ export const features: Feature[] = [
         color: "text-yellow-600",
     },
     {
-        title: "Prod-Ready Deployment",
-        description: "Single binary, Dockerfile, config via env/files, and systemd unit for streamlined ops.",
-        icon: LayoutTemplate,
-        color: "text-gray-800",
-    },
-    {
         title: "Observability",
         description: "Built-in metrics endpoints and structured logs for easy monitoring.",
         icon: ServerCog,
@@ -66,5 +60,11 @@ export const features: Feature[] = [
         description: "Optimized in Rust for low-latency, high-throughput messaging.",
         icon: Rocket,
         color: "text-orange-600",
+    },
+    {
+        title: "Prod-Ready Deployment",
+        description: "Single binary, Dockerfile, config via env/files, and systemd unit for streamlined ops.",
+        icon: LayoutTemplate,
+        color: "text-gray-800",
     },
 ];
