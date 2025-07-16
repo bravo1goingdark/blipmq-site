@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>BlipMQ – Ultra-Light Rust Message Bus</title>
-    <meta name="description"
-          content="BlipMQ is a blazing-fast, embeddable message bus built in Rust. Designed for modern infra and microservices."/>
-    <meta name="robots" content="index, follow"/>
-    <link rel="canonical" href="https://blipmq.dev/"/>
+    <meta name="description" content="BlipMQ is a blazing-fast, embeddable message bus built in Rust. Designed for modern infra and microservices." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://blipmq.dev/" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/blipmq.svg"/>
+    <!-- Favicon (SVG + fallback) -->
+    <link rel="icon" type="image/svg+xml" href="/blipmq.svg" />
+    <link rel="apple-touch-icon" href="/blipmq.svg" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Preconnect / Prefetch: Google Analytics & Tag Manager -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website"/>
-    <meta property="og:url" content="https://blipmq.dev/"/>
-    <meta property="og:title" content="BlipMQ – Ultra-Light Rust Message Bus"/>
-    <meta property="og:description"
-          content="BlipMQ is a blazing-fast, embeddable message bus built in Rust. Designed for modern infra and microservices."/>
-    <meta property="og:image" content="https://blipmq.dev/blipmq-preview.jpg"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://blipmq.dev/" />
+    <meta property="og:title" content="BlipMQ – Ultra-Light Rust Message Bus" />
+    <meta property="og:description" content="BlipMQ is a blazing-fast, embeddable message bus built in Rust. Designed for modern infra and microservices." />
+    <meta property="og:image" content="https://blipmq.dev/blipmq-preview.jpg" />
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:url" content="https://blipmq.dev/"/>
-    <meta name="twitter:title" content="BlipMQ – Ultra-Light Rust Message Bus"/>
-    <meta name="twitter:description"
-          content="BlipMQ is a blazing-fast, embeddable message bus built in Rust. Designed for modern infra and microservices."/>
-    <meta name="twitter:image" content="https://blipmq.dev/blipmq-preview.jpg"/>
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://blipmq.dev/" />
+    <meta name="twitter:title" content="BlipMQ – Ultra-Light Rust Message Bus" />
+    <meta name="twitter:description" content="BlipMQ is a blazing-fast, embeddable message bus built in Rust. Designed for modern infra and microservices." />
+    <meta name="twitter:image" content="https://blipmq.dev/blipmq-preview.jpg" />
 </head>
 
 <body>

@@ -1,69 +1,80 @@
-# React + TypeScript + Vite
+<p align="center">
+  <img src="./src/assets/blipmq.jpg" alt="BlipMQ Logo" width="100%" />
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📢 Follow Us
 
-Currently, two official plugins are available:
+<p align="center">
+  <a href="https://blipmq.dev">
+    <img src="https://img.shields.io/badge/Website-blipmq.dev-0A0A0A?style=flat&logo=google-chrome&logoColor=white" alt="Website" />
+  </a>
+  <a href="https://x.com/blipmq">
+    <img src="https://img.shields.io/badge/Twitter-@blipmq-1DA1F2?style=flat&logo=twitter&logoColor=white" alt="Twitter" />
+  </a>
+  <a href="https://linkedin.com/company/blipmq">
+    <img src="https://img.shields.io/badge/LinkedIn-blipmq-blue?style=flat&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  </a>
+  <a href="https://www.instagram.com/blipmq">
+    <img src="https://img.shields.io/badge/Instagram-@blipmq-E4405F?style=flat&logo=instagram&logoColor=white" alt="Instagram" />
+  </a>
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+<p align="center">
+  <b>BlipMQ</b> is an ultra-lightweight, fault-tolerant message queue written in Rust — built for edge, embedded, and developer-first environments.
+</p>
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+<p align="center">
+  ⚡ <i>“Kafka-level durability. MQTT-level simplicity. NATS-level performance — all in one binary.”</i>
+</p>
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🧩 Features — `v1.0.0`
+
+✅ = Implemented in `v1.0.0`  
+⬜ = Planned for future
+
+### 🔌 Core Broker
+- ✅ Single static binary (no runtime deps)
+- ✅ TCP-based protobuf protocol
+- ✅ Topic-based publish/subscribe
+- ✅ QoS 0 & QoS 1 support
+- ✅ Per-subscriber isolated in-memory queues
+- ✅ Configurable TTL and max queue size
+- ✅ Overflow policies: `drop_oldest`, `drop_new`, `block`
+
+### 🔐 Durability & Safety
+- ✅ Append-only Write-Ahead Log (WAL)
+- ✅ WAL segmentation (rotated files)
+- ✅ Replay unacknowledged messages on restart
+- ✅ CRC32 checksum for corruption detection
+- ✅ Batched WAL flushing with fsync
+
+### 📈 Observability
+- ✅ Prometheus `/metrics` endpoint
+- ✅ Tracing + structured logs
+- ✅ Connection + delivery stats
+
+### 🧰 Operational Controls
+- ✅ Configurable limits (connections, queue depth)
+- ✅ API-key based authentication
+
+---
+
+## 💡 Ideal Use Cases
+
+| Scenario                        | Why BlipMQ?                               |
+|---------------------------------|-------------------------------------------|
+| 🛰️ IoT or edge gateways          | Single-binary durability, low memory use   |
+| 🧪 Local testing/dev environments| Embedded broker with crash recovery        |
+| ⚙️ Internal microservice bus      | Fast pub/sub with no external dependencies |
+| 🧱 CI/CD pipelines               | Durable test event ingestion               |
+
+---
+
+
