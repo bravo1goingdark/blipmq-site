@@ -1,5 +1,5 @@
-import { FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import {FaInstagram, FaTwitter, FaLinkedin, FaGithub} from 'react-icons/fa';
+import {Link} from 'react-router-dom';
 import Logo from '../assets/Footer.svg';
 
 const Footer = () => (
@@ -8,13 +8,13 @@ const Footer = () => (
 
 
             <Link to="/" className="text-3xl font-extrabold text-indigo-600 tracking-tight hover:opacity-90 transition">
-                <img src={Logo} alt="BlipMQ Logo" className="h-10 md:h-12 w-auto inline-block mr-2" />
+                <img src={Logo} alt="BlipMQ Logo" className="h-10 md:h-12 w-auto inline-block mr-2"/>
 
             </Link>
 
 
             <p className="text-sm text-center md:text-left text-gray-600 max-w-xl leading-relaxed">
-                Minimal, lightning-fast messaging built for developers who want total control — no noise, no bloat.
+                Minimal, lightning-fast messaging built for developers who want total control
             </p>
 
             <div className="flex items-center space-x-5">
@@ -24,7 +24,7 @@ const Footer = () => (
                     rel="noopener noreferrer"
                     className="text-gray-600 hover:text-black transition"
                 >
-                    <FaInstagram size={20} />
+                    <FaInstagram size={20}/>
                 </a>
                 <a
                     href="https://twitter.com/blipmq"
@@ -32,7 +32,7 @@ const Footer = () => (
                     rel="noopener noreferrer"
                     className="text-gray-600 hover:text-black transition"
                 >
-                    <FaTwitter size={20} />
+                    <FaTwitter size={20}/>
                 </a>
                 <a
                     href="https://linkedin.com/company/blipmq"
@@ -40,7 +40,16 @@ const Footer = () => (
                     rel="noopener noreferrer"
                     className="text-gray-600 hover:text-black transition"
                 >
-                    <FaLinkedin size={20} />
+                    <FaLinkedin size={20}/>
+                </a>
+
+                <a
+                    href="https://github.com/bravo1goingdark/blipmq"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 hover:text-black transition"
+                >
+                    <FaGithub size={20}/>
                 </a>
             </div>
         </div>
