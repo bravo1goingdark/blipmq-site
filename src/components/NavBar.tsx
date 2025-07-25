@@ -22,11 +22,11 @@ const NavBar = () => {
 
     return (
         <>
-            <nav className="sticky top-0 z-50 w-full bg-white/70 backdrop-blur-md border-b border-gray-200">
+            <nav className="sticky top-0 z-50 w-full bg-white/70 dark:bg-gray-900/70 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
                 <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
                     {/* Left: Logo */}
                     <div className="flex-1">
-                        <div className="text-2xl font-bold text-gray-900 tracking-tight">
+                        <div className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
                             <Link to="/">blipmq</Link>
                         </div>
                     </div>
@@ -36,7 +36,7 @@ const NavBar = () => {
                         <Link
                             to="/features"
                             onClick={() => trackEvent('click', 'navigation', 'features_link')}
-                            className="text-gray-700 hover:text-black transition"
+                            className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition"
                         >
                             Features
                         </Link>
@@ -46,7 +46,7 @@ const NavBar = () => {
                                 trackEvent('click', 'navigation', 'docs_button');
                                 setShowComingSoonModal(true);
                             }}
-                            className="cursor-pointer text-gray-700 hover:text-black transition"
+                            className="cursor-pointer text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition"
                         >
                             Docs
                         </button>
@@ -56,7 +56,7 @@ const NavBar = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={() => trackEvent('click', 'navigation', 'github_link')}
-                            className="text-gray-700 hover:text-black transition"
+                            className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition"
                         >
                             GitHub
                         </a>
@@ -66,7 +66,7 @@ const NavBar = () => {
                     <div className="flex-1 flex justify-end items-center space-x-4">
                         {/* Donor Block */}
                         <div
-                            className="relative group w-[130px] text-center text-sm text-gray-700 font-medium cursor-pointer"
+                            className="relative group w-[130px] text-center text-sm text-gray-700 dark:text-gray-300 font-medium cursor-pointer"
                             onClick={() => {
                                 setShowTooltip(true);
                                 setTimeout(() => setShowTooltip(false), 3000);
@@ -87,7 +87,7 @@ const NavBar = () => {
                             {/* Tooltip */}
                             {(showTooltip || typeof window !== 'undefined') && (
                                 <div
-                                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 z-50 px-3 py-1.5 bg-black text-white text-xs rounded-md transition-opacity duration-200 whitespace-nowrap shadow-lg
+                                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 z-50 px-3 py-1.5 bg-gray-900 dark:bg-gray-800 text-white text-xs rounded-md transition-opacity duration-200 whitespace-nowrap shadow-lg
                 ${showTooltip ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}
                 `}
                                 >
@@ -103,7 +103,7 @@ const NavBar = () => {
                                     trackEvent('click', 'cta', 'get_demo_button');
                                     setShowDemoModal(true);
                                 }}
-                                className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 transition"
+                                className="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
                             >
                                 Get Demo
                             </button>
