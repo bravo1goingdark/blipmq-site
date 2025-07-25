@@ -68,9 +68,9 @@ export default function Highlights() {
                     exit={{opacity: 0}}
                     className="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
                 >
-                    <div className="bg-white px-6 py-5 rounded-xl shadow-lg text-center max-w-sm w-full relative">
+                    <div className="bg-black/90 backdrop-blur-sm px-6 py-5 rounded-xl shadow-lg text-center max-w-sm w-full relative border border-gray-800">
                         <button
-                            className="absolute top-3 right-3 text-gray-400 hover:text-gray-700"
+                            className="absolute top-3 right-3 text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
                             onClick={() => setShowModal(false)}
                         >
                             <X className="w-4 h-4"/>
@@ -135,12 +135,12 @@ export default function Highlights() {
                         value={email}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                         placeholder="Enter your email"
-                        className="w-full sm:w-64 px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                        className="w-full sm:w-64 px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-800 bg-white dark:bg-[#0f172a] text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
                     />
                     <button
                         type="submit"
                         disabled={status === 'loading'}
-                        className="px-5 py-2.5 bg-indigo-600 text-white font-semibold rounded-lg shadow hover:bg-indigo-700 transition"
+                        className="px-5 py-2.5 bg-indigo-600 dark:bg-indigo-700 text-white font-semibold rounded-lg shadow hover:bg-indigo-700 dark:hover:bg-indigo-800 transition"
                     >
                         {status === 'loading' ? 'Submitting...' : 'Join Waitlist'}
                     </button>

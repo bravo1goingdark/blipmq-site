@@ -18,7 +18,7 @@ export const IconCard = ({
             <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
                 {icon}
             </div>
-            <p className="text-sm md:text-base font-semibold text-gray-800">
+            <p className="text-sm md:text-base font-semibold text-gray-800 dark:text-gray-200">
                 {title}
             </p>
         </motion.div>
