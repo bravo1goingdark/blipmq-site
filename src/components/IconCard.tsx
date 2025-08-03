@@ -15,10 +15,10 @@ export const IconCard = ({
             whileHover={{scale: 1.05}}
             className="flex flex-col items-center space-y-2 text-center"
         >
-            <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
+            <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center text-gray-600 dark:text-dark-muted">
                 {icon}
             </div>
-            <p className="text-sm md:text-base font-semibold text-gray-800">
+            <p className="text-sm md:text-base font-semibold text-gray-900 dark:text-dark-foreground">
                 {title}
             </p>
         </motion.div>
