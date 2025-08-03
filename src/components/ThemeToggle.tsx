@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { useTheme } from '../contexts/ThemeContext'
 import { FiMoon, FiSun } from 'react-icons/fi'
 

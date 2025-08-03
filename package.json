@@ -11,6 +11,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.1.11",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.525.0",
     "motion": "^12.23.3",
