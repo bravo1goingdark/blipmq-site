@@ -19,29 +19,29 @@ export const InProgressCarousel = () => {
             transition={{ duration: 0.5 }}
         >
             <div className="flex items-center gap-3">
-                <div className="w-25 h-25 sm:w-30 sm:h-30 py-4">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 py-3">
                     <Lottie animationData={DevAnimation} loop autoplay />
                 </div>
 
 
                 <div className="flex flex-col items-center w-full max-w-sm">
-                    <span className="text-sm font-medium text-indigo-600 mb-3 text-center">
+                    <span className="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-3 text-center">
                         Currently In Development 🛠️
                     </span>
 
                     <motion.div
-                        className="bg-white border border-gray-200 rounded-md p-4 shadow-sm hover:shadow-md transition w-full flex items-center gap-4"
+                        className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-md p-4 shadow-sm hover:shadow-md transition w-full flex items-center gap-4"
                     >
                         <div className="flex-1">
                             <div className="flex items-center gap-2 mb-1">
-                                <div className="p-1.5 bg-gray-100 rounded-full">
+                                <div className="p-1.5 bg-gray-100 dark:bg-dark-subtle rounded-full">
                                     <Icon className={`w-5 h-5 ${feature.color}`} />
                                 </div>
-                                <h3 className="text-sm font-semibold text-gray-900">
+                                <h3 className="text-sm font-semibold text-gray-900 dark:text-dark-foreground">
                                     {feature.title}
                                 </h3>
                             </div>
-                            <p className="text-xs text-gray-600 leading-relaxed">
+                            <p className="text-xs text-gray-600 dark:text-dark-muted leading-relaxed">
                                 {feature.description}
                             </p>
                         </div>

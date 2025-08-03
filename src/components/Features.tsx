@@ -14,10 +14,10 @@ export default function EssentialFeatures() {
                 <span className="text-xs font-semibold uppercase text-indigo-600 tracking-wide">
                     🔧 Production Features
                 </span>
-                <h2 className="mt-2 text-4xl font-bold text-gray-900">
+                <h2 className="mt-2 text-4xl font-bold text-gray-900 dark:text-dark-foreground">
                     Built for Speed, Simplicity & Scale
                 </h2>
-                <p className="mt-3 text-gray-600 text-sm max-w-xl mx-auto">
+                <p className="mt-3 text-gray-600 dark:text-dark-muted text-sm max-w-xl mx-auto">
                     BlipMQ is a lightweight message broker engineered for <br/> high-throughput systems and
                     microservices.
                 </p>
@@ -45,15 +45,15 @@ export default function EssentialFeatures() {
                                 visible: {opacity: 1, y: 0},
                             }}
                             transition={{duration: 0.5}}
-                            className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition"
+                            className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-6 shadow-sm hover:shadow-md transition"
                         >
                             <div className="flex items-center gap-3 mb-4">
-                                <div className="p-2 bg-gray-100 rounded-full">
+                                <div className="p-2 bg-gray-100 dark:bg-dark-subtle rounded-full">
                                     <Icon className={`w-6 h-6 ${feat.color}`}/>
                                 </div>
-                                <h3 className="text-base font-semibold text-gray-900">{feat.title}</h3>
+                                <h3 className="text-base font-semibold text-gray-900 dark:text-dark-foreground">{feat.title}</h3>
                             </div>
-                            <p className="text-sm text-gray-600">{feat.description}</p>
+                            <p className="text-sm text-gray-600 dark:text-dark-muted">{feat.description}</p>
                         </motion.div>
                     );
                 })}

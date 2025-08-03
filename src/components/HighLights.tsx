@@ -94,10 +94,10 @@ export default function Highlights() {
                     initial={{opacity: 0, y: -30}}
                     animate={{opacity: 1, y: 0}}
                     transition={{duration: 0.6}}
-                    className="text-4xl md:text-5xl font-extrabold leading-tight mb-6"
+                    className="text-4xl md:text-5xl font-extrabold leading-tight mb-6 text-gray-900 dark:text-dark-foreground"
                 >
                     Think, send,<br/>
-                    and stream messages <span className="text-indigo-600">lightning fast⚡<span
+                    and stream messages <span className="text-indigo-600 dark:text-indigo-400">lightning fast⚡<span
                     className="-ml-3">🦀</span></span>
                 </motion.h2>
 
@@ -105,7 +105,7 @@ export default function Highlights() {
                     initial={{opacity: 0, y: 20}}
                     animate={{opacity: 1, y: 0}}
                     transition={{delay: 0.2, duration: 0.6}}
-                    className="text-lg text-gray-600 mb-4"
+                    className="text-lg text-gray-600 dark:text-dark-muted mb-4"
                 >
                     BlipMQ combines raw speed, memory efficiency, and fault tolerance in a zero-bloat message broker for
                     microservices. Whether you're shipping logs, events, or state,<strong> BlipMQ delivers with minimal
@@ -135,24 +135,25 @@ export default function Highlights() {
                         value={email}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                         placeholder="Enter your email"
-                        className="w-full sm:w-64 px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                        className="w-full sm:w-64 px-4 py-2.5 rounded-lg bord
+                        er border-neutral-800 dark:border-gray-800 bg-white dark:bg-dark-card text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 transition"
                     />
                     <button
                         type="submit"
                         disabled={status === 'loading'}
-                        className="px-5 py-2.5 bg-indigo-600 text-white font-semibold rounded-lg shadow hover:bg-indigo-700 transition"
+                        className="px-5 py-2.5 bg-indigo-600 dark:bg-indigo-500 text-white font-semibold rounded-lg shadow hover:bg-indigo-700 dark:hover:bg-indigo-600 transition"
                     >
                         {status === 'loading' ? 'Submitting...' : 'Join Waitlist'}
                     </button>
                 </motion.form>
 
                 {status === 'error' && (
-                    <p className="text-sm text-red-600">Something went wrong. Please try again.</p>
+                    <p className="text-sm text-red-600 dark:text-red-400">Something went wrong. Please try again.</p>
                 )}
 
 
                 {status !== 'success' && (
-                    <p className="text-sm px-2 text-gray-500">
+                    <p className="text-sm px-2 text-gray-500 dark:text-gray-400">
                         We respect your inbox. <strong>No spam, ever.</strong>
                     </p>
                 )}
