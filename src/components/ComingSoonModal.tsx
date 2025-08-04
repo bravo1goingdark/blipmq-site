@@ -1,6 +1,6 @@
 import {X} from 'lucide-react';
 import * as React from "react";
-import Rocket from "../assets/animation/Rocket in space-l5VfN.json";
+import Rocket from "../assets/animation/rocket.json";
 import type {Props} from "../@types/icons.ts";
 import Lottie from "lottie-react"
 
@@ -17,13 +17,13 @@ const ComingSoonModal: React.FC<Props> = ({onClose}: Props) => {
                 </button>
 
 
-                <div className="rounded-full overflow-hidden" style={{height: '180px', width: '180px', margin: '0 auto'}}>
+                <div className="rounded-xl overflow-hidden" style={{height: '180px', width: '180px', margin: '0 auto'}}>
                     <div className="h-full w-full bg-white dark:bg-dark-card rounded-full flex items-center justify-center">
                         <Lottie
                             animationData={Rocket}
                             loop={true}
                             style={{height: '90%', width: '90%'}}
-                            className="dark:invert"
+                            className="bg-white dark:bg-white"
                         />
                     </div>
                 </div>

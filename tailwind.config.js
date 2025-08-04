@@ -10,12 +10,12 @@ export default {
       colors: {
         
         dark: {
-          background: '#000000',
+          background: '#121212',
           foreground: '#ffffff',
           card: '#111111',
           border: '#333333',
           muted: '#888888',
-          accent: '#ffffff',
+          accent: '#DDDDDD',
           primary: '#ffffff',
           secondary: '#888888',
           subtle: '#222222',
