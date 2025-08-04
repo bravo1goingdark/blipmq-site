@@ -135,8 +135,7 @@ export default function Highlights() {
                         value={email}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                         placeholder="Enter your email"
-                        className="w-full sm:w-64 px-4 py-2.5 rounded-lg bord
-                        er border-neutral-800 dark:border-gray-800 bg-white dark:bg-dark-card text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 transition"
+                        className="w-full sm:w-64 px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-800 bg-white dark:bg-dark-card text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 transition"
                     />
                     <button
                         type="submit"

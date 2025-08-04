@@ -1,10 +1,11 @@
 import {lazy, useEffect, useState} from 'react';
-import { Menu, X } from 'lucide-react';
+import {Menu, X} from 'lucide-react';
+
 const ComingSoonModal = lazy(() => import("../components/ComingSoonModal.tsx"));
-import { Link } from 'react-router-dom';
-import { trackEvent } from '../utils/analytics';
-import { motion, AnimatePresence } from 'motion/react';
-import { donors } from '../utils/donors.ts';
+import {Link} from 'react-router-dom';
+import {trackEvent} from '../utils/analytics';
+import {motion, AnimatePresence} from 'motion/react';
+import {donors} from '../utils/donors.ts';
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +23,8 @@ const NavBar = () => {
 
     return (
         <>
-            <nav className="sticky top-0 z-50 w-full bg-white/70 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+            <nav
+                className="sticky top-0 z-50 w-full bg-white/70 dark:bg-[rgba(18,18,18,100)] backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
                 <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
                     {/* Left: Logo */}
                     <div className="flex-1">
@@ -75,10 +77,10 @@ const NavBar = () => {
                             <AnimatePresence mode="wait">
                                 <motion.div
                                     key={donors[donorIndex]}
-                                    initial={{ y: 15, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
-                                    exit={{ y: -15, opacity: 0 }}
-                                    transition={{ duration: 0.4 }}
+                                    initial={{y: 15, opacity: 0}}
+                                    animate={{y: 0, opacity: 1}}
+                                    exit={{y: -15, opacity: 0}}
+                                    transition={{duration: 0.4}}
                                 >
                                     💖 {donors[donorIndex]}
                                 </motion.div>
@@ -114,14 +116,15 @@ const NavBar = () => {
                             className="md:hidden text-gray-700"
                             onClick={() => setIsOpen(!isOpen)}
                         >
-                            {isOpen ? <X size={24} /> : <Menu size={24} />}
+                            {isOpen ? <X size={24}/> : <Menu size={24}/>}
                         </button>
                     </div>
                 </div>
 
                 {/* Mobile Menu */}
                 {isOpen && (
-                    <div className="md:hidden px-4 pb-4 pt-2 bg-white/90 dark:bg-gray-950/90 backdrop-blur-md border-t border-gray-200 dark:border-gray-800 text-sm font-medium space-y-2">
+                    <div
+                        className="md:hidden px-4 pb-4 pt-2 bg-white/90 dark:bg-gray-950/90 backdrop-blur-md border-t border-gray-200 dark:border-gray-800 text-sm font-medium space-y-2">
                         <Link
                             to="/features"
                             onClick={() => {
@@ -167,8 +170,8 @@ const NavBar = () => {
             </nav>
 
             {/* Modals */}
-            {showDemoModal && <ComingSoonModal onClose={() => setShowDemoModal(false)} />}
-            {showComingSoonModal && <ComingSoonModal onClose={() => setShowComingSoonModal(false)} />}
+            {showDemoModal && <ComingSoonModal onClose={() => setShowDemoModal(false)}/>}
+            {showComingSoonModal && <ComingSoonModal onClose={() => setShowComingSoonModal(false)}/>}
         </>
     );
 };

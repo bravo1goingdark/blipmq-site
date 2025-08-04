@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./src/assets/blipmq.jpg" alt="BlipMQ Logo" width="100%" />
+  <img src="./src/assets/blipmq.png" alt="BlipMQ Logo" width="100%" />
 </p>
 
 ## 📢 Follow Us
