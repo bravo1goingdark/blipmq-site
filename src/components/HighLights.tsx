@@ -96,9 +96,9 @@ export default function Highlights() {
                     transition={{duration: 0.6}}
                     className="text-4xl md:text-5xl font-extrabold leading-tight mb-6 text-gray-900 dark:text-dark-foreground"
                 >
-                    Think, send,<br/>
-                    and stream messages <span className="text-indigo-600 dark:text-indigo-400">lightning fast⚡<span
-                    className="-ml-3">🦀</span></span>
+                    Build, deploy, and scale<br/>
+                    <span className="text-indigo-600 dark:text-indigo-400">lightning-fast messaging</span><br/>
+                    infrastructure
                 </motion.h2>
 
                 <motion.p
