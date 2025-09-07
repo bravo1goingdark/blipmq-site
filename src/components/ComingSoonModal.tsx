@@ -5,7 +5,9 @@ import type {Props} from "../@types/icons.ts";
 import Lottie from "lottie-react"
 
 
-const ComingSoonModal: React.FC<Props> = ({onClose}: Props) => {
+const ComingSoonModal: React.FC<Props> = ({onClose, title, message}: Props) => {
+    const heading = title ?? 'Coming Soon';
+    const body = message ?? "We're cooking up something awesome. <br/> Stay tuned.";
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 dark:bg-black/60">
             <div className="bg-white dark:bg-dark-card px-6 py-6 rounded-2xl shadow-xl text-center max-w-sm w-full relative">
@@ -15,7 +17,6 @@ const ComingSoonModal: React.FC<Props> = ({onClose}: Props) => {
                 >
                     <X className="w-5 h-5"/>
                 </button>
-
 
                 <div className="rounded-xl overflow-hidden" style={{height: '180px', width: '180px', margin: '0 auto'}}>
                     <div className="h-full w-full bg-white dark:bg-dark-card rounded-full flex items-center justify-center">
@@ -28,8 +29,8 @@ const ComingSoonModal: React.FC<Props> = ({onClose}: Props) => {
                     </div>
                 </div>
 
-                <h3 className="text-xl font-semibold mt-2 mb-1 text-gray-800 dark:text-dark-foreground">Coming Soon</h3>
-                <p className="text-sm text-gray-600 dark:text-dark-muted">We're cooking up something awesome. <br/> Stay tuned.</p>
+                <h3 className="text-xl font-semibold mt-2 mb-1 text-gray-800 dark:text-dark-foreground">{heading}</h3>
+                <p className="text-sm text-gray-600 dark:text-dark-muted" dangerouslySetInnerHTML={{ __html: body }} />
             </div>
         </div>
     );

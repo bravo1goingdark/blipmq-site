@@ -8,6 +8,8 @@ export interface IconCardProps {
 
 export interface Props {
     onClose: () => void;
+    title?: string;
+    message?: string;
 }
 
 export interface Features {

@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Terminal, Cpu, Database, Zap, Filter, FileText } from 'lucide-react';
+import { useState, lazy, Suspense } from 'react';
 
 // Helper function for icon gradients
 const getIconGradient = (index: number) => {
@@ -14,7 +15,10 @@ const getIconGradient = (index: number) => {
     return gradients[index % gradients.length];
 };
 
+const ComingSoonModal = lazy(() => import('../components/ComingSoonModal.tsx'));
+
 const MailGrid = () => {
+    const [showUiModal, setShowUiModal] = useState(false);
     return (
 <>
 
@@ -56,19 +60,13 @@ const MailGrid = () => {
                         >
                             Download CLI
                         </a>
-                        <div className="flex items-center gap-2">
-                            <a 
-                                href="https://github.com/bravo1goingdark/mailgrid-ui/releases"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="px-5 py-2.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 font-semibold rounded-lg transition inline-block text-center"
-                            >
-                                Download UI
-                            </a>
-                            <span className="px-2 py-1 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 text-xs font-medium">
-                                Under production
-                            </span>
-                        </div>
+<button
+                            type="button"
+                            onClick={() => setShowUiModal(true)}
+                            className="px-5 py-2.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 font-semibold rounded-lg transition inline-block text-center"
+                        >
+                            Download UI
+                        </button>
                         <a 
                             href="https://github.com/bravo1goingdark/mailgrid/blob/main/docs/docs.md"
                             target="_blank"
@@ -94,7 +92,16 @@ const MailGrid = () => {
                         <div className="ml-4">--concurrency 10</div>
                     </motion.div>
                 </div>
-            </section>
+{showUiModal && (
+    <Suspense fallback={null}>
+        <ComingSoonModal
+            onClose={() => setShowUiModal(false)}
+            title="Under development"
+            message="MailGrid Desktop is under active development.<br/>Please check back soon or follow the repo for updates."
+        />
+    </Suspense>
+)}
+</section>
 
 {/* Features Section */}
             <section className="max-w-6xl mx-auto px-4 py-16">
