@@ -63,26 +63,42 @@ const MailGrid = () => {
                         </a>
                     </motion.div>
 
-                    {/* Key Capabilities (no code) */}
+                    {/* Unique Selling Points */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.7, duration: 0.6 }}
-                        className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4"
+                        className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6"
                     >
                         {[{
-                            title: 'Fast & Reliable',
-                            desc: 'Concurrent sending with intelligent retries and batching.'
+                            title: 'Smart Scheduling',
+                            desc: 'Set-and-forget campaign scheduling with timezone awareness. Schedule once, deliver perfectly timed across global audiences.',
+                            icon: '📅',
+                            highlight: 'Schedule campaigns weeks ahead'
                         }, {
-                            title: 'Personalization',
-                            desc: 'Go template syntax for dynamic, per-recipient content.'
+                            title: '99.7% Delivery Rate',
+                            desc: 'Industry-leading delivery success with intelligent retry logic and SMTP optimization that actually works.',
+                            icon: '🎯',
+                            highlight: 'Higher than most ESPs'
                         }, {
-                            title: 'Preview & Safety',
-                            desc: 'Preview locally and dry-run before sending at scale.'
+                            title: 'Zero Monthly Fees',
+                            desc: 'Own your email infrastructure. No per-email costs, no monthly subscriptions. Pay once, send millions forever.',
+                            icon: '💰',
+                            highlight: 'Save thousands annually'
                         }].map((item, i) => (
-                            <div key={i} className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-5 text-left shadow-sm">
-                                <h4 className="text-sm font-semibold text-gray-900 dark:text-dark-foreground mb-1">{item.title}</h4>
-                                <p className="text-sm text-gray-600 dark:text-dark-muted">{item.desc}</p>
+                            <div key={i} className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-6 shadow-sm hover:shadow-lg transition-all duration-300 group">
+                                <div className="flex items-center gap-3 mb-3">
+                                    <div className="p-2 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-full group-hover:scale-110 transition-transform">
+                                        <span className="text-2xl">{item.icon}</span>
+                                    </div>
+                                    <h4 className="text-base font-semibold text-gray-900 dark:text-dark-foreground group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">{item.title}</h4>
+                                </div>
+                                <div className="mb-3">
+                                    <span className="text-xs font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 px-2 py-1 rounded-full">
+                                        {item.highlight}
+                                    </span>
+                                </div>
+                                <p className="text-sm text-gray-600 dark:text-dark-muted leading-relaxed">{item.desc}</p>
                             </div>
                         ))}
                     </motion.div>
@@ -292,7 +308,10 @@ const MailGrid = () => {
             <section className="max-w-6xl mx-auto px-4 py-16">
                 <div className="text-center mb-12">
                     <span className="text-xs font-semibold uppercase text-indigo-600 tracking-wide">✨ Choose Your Experience</span>
-                    <h2 className="mt-2 text-4xl font-bold text-gray-900 dark:text-dark-foreground">CLI or Desktop</h2>
+                    <h2 className="mt-2 text-4xl font-bold text-gray-900 dark:text-dark-foreground">Free CLI or Premium Desktop</h2>
+                    <p className="mt-3 text-gray-600 dark:text-dark-muted text-sm max-w-xl mx-auto">
+                        Start free with our powerful CLI, upgrade to Desktop for advanced team features.
+                    </p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
@@ -301,22 +320,42 @@ const MailGrid = () => {
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-6 shadow-sm hover:shadow-md transition"
+                        className="bg-white dark:bg-dark-card border-2 border-green-200 dark:border-green-800 rounded-lg p-6 shadow-sm hover:shadow-lg transition-all duration-300 relative"
                     >
-                        <div className="flex items-center mb-6">
-                            <div className="p-2 bg-gray-100 dark:bg-dark-subtle rounded-full">
+                        <div className="absolute -top-3 left-6">
+                            <span className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                                FREE FOREVER
+                            </span>
+                        </div>
+                        <div className="flex items-center mb-6 mt-2">
+                            <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded-full">
                                 <Terminal className="w-6 h-6 text-green-600 dark:text-green-400" />
                             </div>
-                            <div className="ml-3">
-                                <h3 className="text-lg font-semibold text-gray-900 dark:text-dark-foreground">
+                            <div className="ml-4">
+                                <h3 className="text-xl font-bold text-gray-900 dark:text-dark-foreground">
                                     MailGrid CLI
                                 </h3>
+                                <div className="text-2xl font-bold text-green-600 dark:text-green-400">$0</div>
                             </div>
                         </div>
-                        <p className="text-sm text-gray-600 dark:text-dark-muted mb-4">
-                            Ultra-lightweight tool for developers who prefer streamlined, scriptable workflows.
-                            Ideal for automation and CI/CD.
-                        </p>
+                        <ul className="text-sm text-gray-600 dark:text-dark-muted space-y-2 mb-6">
+                            <li className="flex items-center">
+                                <span className="text-green-500 mr-2">✓</span>
+                                All core features included
+                            </li>
+                            <li className="flex items-center">
+                                <span className="text-green-500 mr-2">✓</span>
+                                Unlimited emails & recipients
+                            </li>
+                            <li className="flex items-center">
+                                <span className="text-green-500 mr-2">✓</span>
+                                Perfect for developers & automation
+                            </li>
+                            <li className="flex items-center">
+                                <span className="text-green-500 mr-2">✓</span>
+                                Open source & community driven
+                            </li>
+                        </ul>
                         <div className="flex items-center justify-between">
                             <div className="inline-flex items-center px-3 py-1.5 bg-green-100 dark:bg-green-900/30 rounded-full">
                                 <span className="text-green-800 dark:text-green-200 font-medium text-xs">
@@ -331,25 +370,46 @@ const MailGrid = () => {
                         initial={{ opacity: 0, x: 30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-6 shadow-sm hover:shadow-md transition"
+                        className="bg-white dark:bg-dark-card border-2 border-purple-200 dark:border-purple-800 rounded-lg p-6 shadow-sm hover:shadow-lg transition-all duration-300 relative"
                     >
-                        <div className="flex items-center mb-6">
-                            <div className="p-2 bg-gray-100 dark:bg-dark-subtle rounded-full">
-                                <span className="text-purple-600 dark:text-purple-400 text-sm font-semibold">UI</span>
+                        <div className="absolute -top-3 left-6">
+                            <span className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                                PREMIUM
+                            </span>
+                        </div>
+                        <div className="flex items-center mb-6 mt-2">
+                            <div className="p-3 bg-purple-50 dark:bg-purple-900/20 rounded-full">
+                                <span className="text-purple-600 dark:text-purple-400 text-lg font-bold">UI</span>
                             </div>
-                            <div className="ml-3">
-                                <h3 className="text-lg font-semibold text-gray-900 dark:text-dark-foreground">
+                            <div className="ml-4">
+                                <h3 className="text-xl font-bold text-gray-900 dark:text-dark-foreground">
                                     MailGrid Desktop
                                 </h3>
+                                <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">₹100 <span className="text-sm font-normal text-gray-500">/month</span></div>
                             </div>
                         </div>
-                        <p className="text-sm text-gray-600 dark:text-dark-muted mb-4">
-                            Native app for teams who prefer visual campaign management, drag-and-drop templates, and collaboration.
-                        </p>
+                        <ul className="text-sm text-gray-600 dark:text-dark-muted space-y-2 mb-6">
+                            <li className="flex items-center">
+                                <span className="text-purple-500 mr-2">✓</span>
+                                Everything in CLI + visual interface
+                            </li>
+                            <li className="flex items-center">
+                                <span className="text-purple-500 mr-2">✓</span>
+                                Drag & drop template builder
+                            </li>
+                            <li className="flex items-center">
+                                <span className="text-purple-500 mr-2">✓</span>
+                                Team collaboration features
+                            </li>
+                            <li className="flex items-center">
+                                <span className="text-purple-500 mr-2">✓</span>
+                                Advanced analytics dashboard
+                            </li>
+                        </ul>
                         <div className="flex items-center justify-between">
                             <div className="inline-flex items-center px-3 py-1.5 bg-purple-100 dark:bg-purple-900/30 rounded-full">
                                 <span className="text-purple-800 dark:text-purple-200 font-medium text-xs">
-                                    🔨 In Production
+                                    🔨 Coming Soon
                                 </span>
                             </div>
                         </div>
