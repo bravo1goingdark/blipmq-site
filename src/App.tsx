@@ -8,7 +8,6 @@ import { ThemeProvider } from './contexts/ThemeContext';
 const Highlights = lazy(() => import("./components/HighLights.tsx"));
 const EssentialFeatures = lazy(() => import("./components/Features.tsx"));
 const MailGrid = lazy(() => import('./pages/MailGrid.tsx'));
-const About = lazy(() => import('./pages/About.tsx'));
 const Footer = lazy(() => import('./components/Footer.tsx'))
 const App = () => {
     usePageTracking();
@@ -29,7 +28,6 @@ const App = () => {
                         <Routes>
                             <Route path="/" element={<Highlights />} />
                             <Route path="/features" element={<EssentialFeatures />} />
-                            <Route path="/about" element={<About />} />
                             <Route path="/mailgrid" element={<MailGrid />} />
                         </Routes>
                     </Suspense>

@@ -44,14 +44,6 @@ const NavBar = () => {
                             Features
                         </Link>
 
-                        <Link
-                            to="/about"
-                            onClick={() => trackEvent('click', 'navigation', 'about_link')}
-                            className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition"
-                        >
-                            About
-                        </Link>
-
                         <button
                             onClick={() => {
                                 trackEvent('click', 'navigation', 'docs_button');
@@ -129,15 +121,15 @@ const NavBar = () => {
 
                         {/* CTA Button */}
                         <div className="hidden md:block">
-                            <Link
-                                to="/"
+                            <button
                                 onClick={() => {
-                                    trackEvent('click', 'cta', 'get_started_button');
+                                    trackEvent('click', 'cta', 'get_demo_button');
+                                    setShowDemoModal(true);
                                 }}
-                                className="px-4 py-2 bg-indigo-600 dark:bg-indigo-500 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 dark:hover:bg-indigo-600 transition shadow-sm"
+                                className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-medium text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-black dark:hover:text-gray-200 transition"
                             >
-                                Get Started
-                            </Link>
+                                Get Demo
+                            </button>
                         </div>
 
                         {/* Mobile Menu Toggle */}
