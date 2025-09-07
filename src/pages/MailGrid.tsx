@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
-import { Terminal, Cpu, Database, Zap, Filter, FileText, CalendarClock, Monitor } from 'lucide-react';
-import { useState, lazy, Suspense } from 'react';
+import { Terminal, Cpu, Database, Zap, Filter, FileText, CalendarClock, Monitor, Copy, Check } from 'lucide-react';
+import { useState, lazy, Suspense, type ReactNode } from 'react';
 
 // Helper function for icon gradients
 const getIconGradient = (index: number) => {
@@ -16,6 +16,46 @@ const getIconGradient = (index: number) => {
 };
 
 const ComingSoonModal = lazy(() => import('../components/ComingSoonModal.tsx'));
+
+type CodeSnippetProps = {
+    title: string;
+    icon?: ReactNode;
+    lines: string[];
+    copy: string;
+};
+
+const CodeSnippet = ({ title, icon, lines, copy }: CodeSnippetProps) => {
+    const [copied, setCopied] = useState(false);
+    const handleCopy = async () => {
+        try {
+            await navigator.clipboard.writeText(copy);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 1500);
+        } catch (_) {}
+    };
+    return (
+        <div className="relative">
+            <div className="mb-2 flex items-center text-gray-400">
+                {icon}
+                <span className="text-xs font-semibold uppercase tracking-wide ml-1">{title}</span>
+            </div>
+            <div className="relative max-w-full bg-gray-900 dark:bg-gray-800 rounded-lg p-4 text-left text-sm font-mono text-green-400 overflow-x-auto shadow">
+                <button
+                    type="button"
+                    aria-label="Copy"
+                    onClick={handleCopy}
+                    className="absolute top-2 right-2 inline-flex items-center gap-1 px-2 py-1 rounded-md border border-gray-700 text-[11px] text-gray-300 hover:bg-gray-800"
+                >
+                    {copied ? <Check className="w-3.5 h-3.5"/> : <Copy className="w-3.5 h-3.5"/>}
+                    <span>{copied ? 'Copied' : 'Copy'}</span>
+                </button>
+                {lines.map((l, i) => (
+                    <div key={i} className={i === 0 ? 'text-gray-400' : ''}>{l}</div>
+                ))}
+            </div>
+        </div>
+    );
+};
 
 const MailGrid = () => {
     const [showUiModal, setShowUiModal] = useState(false);
@@ -82,14 +122,50 @@ const MailGrid = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.7, duration: 0.6 }}
-                        className="max-w-2xl mx-auto bg-gray-900 dark:bg-gray-800 rounded-lg p-4 text-left text-sm font-mono text-green-400 overflow-x-auto shadow"
+                        className="max-w-3xl mx-auto"
                     >
-                        <div className="text-gray-400"># Production send with concurrency and retries</div>
-                        <div>$ ./mailgrid send \</div>
-                        <div className="ml-4">--csv contacts.csv \</div>
-                        <div className="ml-4">--template welcome.html \</div>
-                        <div className="ml-4">--subject "Welcome, {'{{.name}}'}!" \</div>
-                        <div className="ml-4">-c 5 -r 3 --batch-size 5</div>
+                        <CodeSnippet
+                            title="Production"
+                            icon={<Terminal className="w-4 h-4"/>}
+                            lines={[
+                                '# Production send with concurrency and retries',
+                                '$ ./mailgrid send \\\\',
+                                '    --csv contacts.csv \\\\',
+                                '    --template welcome.html \\\\',
+                                '    --subject "Welcome, {{.name}}!" \\\\',
+                                '    -c 5 -r 3 --batch-size 5',
+                            ]}
+                            copy={`./mailgrid send \\\n    --csv contacts.csv \\\n    --template welcome.html \\\n    --subject "Welcome, {{.name}}!" \\\n    -c 5 -r 3 --batch-size 5`}
+                        />
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                            <CodeSnippet
+                                title="Preview"
+                                icon={<Monitor className="w-4 h-4"/>}
+                                lines={[
+                                    '# Local preview server',
+                                    '$ mailgrid --preview',
+                                    '# custom port + inputs',
+                                    '$ mailgrid -p --port 7070 \\\\',
+                                    '    --csv data/contacts.csv \\\\',
+                                    '    --template templates/offer.html',
+                                ]}
+                                copy={`mailgrid --preview`}
+                            />
+                            <CodeSnippet
+                                title="Schedule"
+                                icon={<CalendarClock className="w-4 h-4"/>}
+                                lines={[
+                                    '# One-off scheduled send (UTC)',
+                                    '$ mailgrid \\\\',
+                                    '    --env cfg/prod.json \\\\',
+                                    '    --csv example/test_contacts.csv \\\\',
+                                    '    -t example/welcome.html -s "Welcome {{.name}}" \\\\',
+                                    '    --schedule-at 2025-09-08T09:00:00Z',
+                                ]}
+                                copy={`mailgrid --schedule-at 2025-09-08T09:00:00Z`}
+                            />
+                        </div>
                     </motion.div>
                 </div>
 {showUiModal && (
