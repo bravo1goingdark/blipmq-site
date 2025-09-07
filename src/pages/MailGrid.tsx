@@ -56,14 +56,19 @@ const MailGrid = () => {
                         >
                             Download CLI
                         </a>
-                        <a 
-                            href="https://github.com/bravo1goingdark/mailgrid-ui/releases"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-5 py-2.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 font-semibold rounded-lg transition inline-block text-center"
-                        >
-                            Download UI
-                        </a>
+                        <div className="flex items-center gap-2">
+                            <a 
+                                href="https://github.com/bravo1goingdark/mailgrid-ui/releases"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-5 py-2.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 font-semibold rounded-lg transition inline-block text-center"
+                            >
+                                Download UI
+                            </a>
+                            <span className="px-2 py-1 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 text-xs font-medium">
+                                Under production
+                            </span>
+                        </div>
                         <a 
                             href="https://github.com/bravo1goingdark/mailgrid/blob/main/docs/docs.md"
                             target="_blank"
