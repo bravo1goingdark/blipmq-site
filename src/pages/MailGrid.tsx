@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Terminal, Cpu, Database, Zap, Filter, FileText } from 'lucide-react';
+import { Terminal, Cpu, Database, Zap, Filter, FileText, CalendarClock, Monitor } from 'lucide-react';
 import { useState, lazy, Suspense } from 'react';
 
 // Helper function for icon gradients
@@ -84,12 +84,12 @@ const MailGrid = () => {
                         transition={{ delay: 0.7, duration: 0.6 }}
                         className="max-w-2xl mx-auto bg-gray-900 dark:bg-gray-800 rounded-lg p-4 text-left text-sm font-mono text-green-400 overflow-x-auto shadow"
                     >
-                        <div className="text-gray-400"># Send 10,000 emails</div>
+                        <div className="text-gray-400"># Production send with concurrency and retries</div>
                         <div>$ ./mailgrid send \</div>
                         <div className="ml-4">--csv contacts.csv \</div>
                         <div className="ml-4">--template welcome.html \</div>
                         <div className="ml-4">--subject "Welcome, {'{{.name}}'}!" \</div>
-                        <div className="ml-4">--concurrency 10</div>
+                        <div className="ml-4">-c 5 -r 3 --batch-size 5</div>
                     </motion.div>
                 </div>
 {showUiModal && (
@@ -251,26 +251,26 @@ const features = [
     },
     {
         icon: Zap,
-        title: "High Concurrency",
-        description: "Worker pool architecture with configurable concurrency and batching",
+        title: "Concurrency & Retries",
+        description: "Parallel SMTP workers with exponential backoff and jitter for robust delivery",
         color: "text-yellow-600 dark:text-yellow-400"
     },
     {
         icon: Filter,
         title: "Logical Filtering",
-        description: "Advanced recipient filtering with logical expressions and conditions",
+        description: "Target recipients using expressions: contains, startswith, >, and/or, groups",
         color: "text-purple-600 dark:text-purple-400"
     },
     {
-        icon: Terminal,
-        title: "CLI-First Design",
-        description: "Zero-bloat command-line tool with preview mode and dry-run capabilities",
+        icon: CalendarClock,
+        title: "Scheduling & Jobs",
+        description: "One-off or recurring via RFC3339, interval, or cron; persisted locally in BoltDB",
         color: "text-indigo-600 dark:text-indigo-400"
     },
     {
-        icon: Cpu,
-        title: "SMTP Agnostic",
-        description: "Works with any SMTP provider: Gmail, Zoho, SendGrid, or custom servers",
+        icon: Monitor,
+        title: "Preview & Dry-run",
+        description: "Local preview server and safe dry-run rendering for debugging templates",
         color: "text-red-600 dark:text-red-400"
     }
 ];
