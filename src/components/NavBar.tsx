@@ -1,5 +1,5 @@
 import {lazy, useEffect, useState} from 'react';
-import {Menu, X} from 'lucide-react';
+import {Menu, X, ChevronDown} from 'lucide-react';
 
 const ComingSoonModal = lazy(() => import("../components/ComingSoonModal.tsx"));
 import {Link} from 'react-router-dom';
@@ -12,6 +12,7 @@ const NavBar = () => {
     const [showDemoModal, setShowDemoModal] = useState(false);
     const [showComingSoonModal, setShowComingSoonModal] = useState(false);
     const [showTooltip, setShowTooltip] = useState(false);
+    const [showProductDropdown, setShowProductDropdown] = useState(false);
     const [donorIndex, setDonorIndex] = useState(0);
 
     useEffect(() => {
@@ -53,15 +54,35 @@ const NavBar = () => {
                             Docs
                         </button>
 
-                        <a
-                            href="https://github.com/bravo1goingdark/blipmq"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={() => trackEvent('click', 'navigation', 'github_link')}
-                            className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition"
-                        >
-                            GitHub
-                        </a>
+                        <div className="relative">
+                            <button
+                                onClick={() => setShowProductDropdown(!showProductDropdown)}
+                                onMouseEnter={() => setShowProductDropdown(true)}
+                                className="flex items-center text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition"
+                            >
+                                Product
+                                <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-200 ${showProductDropdown ? 'rotate-180' : ''}`} />
+                            </button>
+
+                            {/* Product Dropdown */}
+{showProductDropdown && (
+                                <div
+                                    className="absolute top-full left-0 mt-2 w-40 bg-white dark:bg-dark-card rounded-lg shadow-md border border-gray-200 dark:border-dark-border z-50"
+                                    onMouseLeave={() => setShowProductDropdown(false)}
+                                >
+                                    <Link
+                                        to="/mailgrid"
+                                        onClick={() => {
+                                            trackEvent('click', 'navigation', 'mailgrid_link');
+                                            setShowProductDropdown(false);
+                                        }}
+                                        className="block px-3 py-2 text-sm text-left rounded-md text-gray-700 dark:text-dark-muted hover:text-black dark:hover:text-dark-foreground hover:bg-gray-100 dark:hover:bg-dark-hover transition"
+                                    >
+                                        MailGrid
+                                    </Link>
+                                </div>
+                            )}
+                        </div>
                     </div>
 
                     {/* Right: Donor + CTA + Mobile Menu */}
@@ -146,15 +167,16 @@ const NavBar = () => {
                             Docs
                         </button>
 
-                        <a
-                            href="https://github.com/bravo1goingdark/blipmq"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={() => trackEvent('click', 'navigation', 'github_link_mobile')}
+                        <Link
+                            to="/mailgrid"
+                            onClick={() => {
+                                trackEvent('click', 'navigation', 'mailgrid_link_mobile');
+                                setIsOpen(false);
+                            }}
                             className="block px-3 py-2 rounded-md text-gray-700 dark:text-dark-muted hover:text-black dark:hover:text-dark-foreground hover:bg-gray-100 dark:hover:bg-dark-hover transition"
                         >
-                            GitHub
-                        </a>
+                            MailGrid
+                        </Link>
 
                         <button
                             onClick={() => {
