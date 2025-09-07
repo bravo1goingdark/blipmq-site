@@ -39,7 +39,7 @@ export default function Highlights() {
                 setStatus('error');
             }
 
-        } catch (err) {
+        } catch {
             setStatus('error');
         }
     };

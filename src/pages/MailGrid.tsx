@@ -1,69 +1,15 @@
 import { motion } from 'motion/react';
-import { Terminal, Cpu, Database, Zap, Filter, FileText, CalendarClock, Monitor, Copy, Check } from 'lucide-react';
-import { useState, lazy, Suspense, type ReactNode } from 'react';
-
-// Helper function for icon gradients
-const getIconGradient = (index: number) => {
-    const gradients = [
-        'from-green-500 to-emerald-600',
-        'from-blue-500 to-cyan-600', 
-        'from-yellow-500 to-orange-600',
-        'from-purple-500 to-pink-600',
-        'from-indigo-500 to-purple-600',
-        'from-red-500 to-pink-600'
-    ];
-    return gradients[index % gradients.length];
-};
+import { Terminal, Database, Zap, Filter, FileText, CalendarClock, Monitor } from 'lucide-react';
+import { useState, lazy, Suspense } from 'react';
 
 const ComingSoonModal = lazy(() => import('../components/ComingSoonModal.tsx'));
-
-type CodeSnippetProps = {
-    title: string;
-    icon?: ReactNode;
-    lines: string[];
-    copy: string;
-};
-
-const CodeSnippet = ({ title, icon, lines, copy }: CodeSnippetProps) => {
-    const [copied, setCopied] = useState(false);
-    const handleCopy = async () => {
-        try {
-            await navigator.clipboard.writeText(copy);
-            setCopied(true);
-            setTimeout(() => setCopied(false), 1500);
-        } catch (_) {}
-    };
-    return (
-        <div className="relative">
-            <div className="mb-2 flex items-center text-gray-400">
-                {icon}
-                <span className="text-xs font-semibold uppercase tracking-wide ml-1">{title}</span>
-            </div>
-            <div className="relative max-w-full bg-gray-900 dark:bg-gray-800 rounded-lg p-4 text-left text-sm font-mono text-green-400 overflow-x-auto shadow">
-                <button
-                    type="button"
-                    aria-label="Copy"
-                    onClick={handleCopy}
-                    className="absolute top-2 right-2 inline-flex items-center gap-1 px-2 py-1 rounded-md border border-gray-700 text-[11px] text-gray-300 hover:bg-gray-800"
-                >
-                    {copied ? <Check className="w-3.5 h-3.5"/> : <Copy className="w-3.5 h-3.5"/>}
-                    <span>{copied ? 'Copied' : 'Copy'}</span>
-                </button>
-                {lines.map((l, i) => (
-                    <div key={i} className={i === 0 ? 'text-gray-400' : ''}>{l}</div>
-                ))}
-            </div>
-        </div>
-    );
-};
 
 const MailGrid = () => {
     const [showUiModal, setShowUiModal] = useState(false);
     return (
-<>
-
+        <>
             {/* Hero Section */}
-<section className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 md:px-12 py-20">
+            <section className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 md:px-12 py-20">
                 <div className="text-center">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
@@ -74,129 +20,245 @@ const MailGrid = () => {
                         <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 rounded-full mb-6">
                             <span className="text-indigo-700 dark:text-indigo-300 text-sm font-semibold">✨ Email Orchestrator</span>
                         </div>
-<h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6 text-gray-900 dark:text-dark-foreground">MailGrid</h1>
+                        <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6 text-gray-900 dark:text-dark-foreground">MailGrid</h1>
                     </motion.div>
 
-<motion.p
+                    <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 0.6 }}
                         className="text-lg text-gray-600 dark:text-dark-muted mb-8 max-w-2xl mx-auto"
                     >
-                        High-performance CLI for bulk email orchestration. Read from CSV or Google Sheets, template with Go syntax, and send via your SMTP provider — available now on GitHub.
+                        MailGrid is a high-performance email orchestrator. Bring recipients from CSV or Google Sheets, personalize with Go-style templates, and deliver via any SMTP provider.
                     </motion.p>
-                    
-<motion.div
+
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5, duration: 0.6 }}
                         className="flex flex-col sm:flex-row gap-4 justify-center mb-8"
                     >
-                        <a 
+                        <a
                             href="https://github.com/bravo1goingdark/mailgrid/releases"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-5 py-2.5 bg-indigo-600 dark:bg-indigo-500 text-white font-semibold rounded-lg shadow hover:bg-indigo-700 dark:hover:bg-indigo-600 transition inline-block text-center"
                         >
-                            Download CLI
+                            Get MailGrid
                         </a>
-<button
+                        <button
                             type="button"
                             onClick={() => setShowUiModal(true)}
                             className="px-5 py-2.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 font-semibold rounded-lg transition inline-block text-center"
                         >
-                            Download UI
+                            MailGrid Desktop
                         </button>
-                        <a 
+                        <a
                             href="https://github.com/bravo1goingdark/mailgrid/blob/main/docs/docs.md"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-5 py-2.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 font-semibold rounded-lg transition inline-block text-center"
                         >
-                            View Docs
+                            Documentation
                         </a>
                     </motion.div>
 
-{/* Code Preview */}
+                    {/* Key Capabilities (no code) */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.7, duration: 0.6 }}
-                        className="max-w-3xl mx-auto"
+                        className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4"
                     >
-                        <CodeSnippet
-                            title="Production"
-                            icon={<Terminal className="w-4 h-4"/>}
-                            lines={[
-                                '# Production send with concurrency and retries',
-                                '$ ./mailgrid send \\\\',
-                                '    --csv contacts.csv \\\\',
-                                '    --template welcome.html \\\\',
-                                '    --subject "Welcome, {{.name}}!" \\\\',
-                                '    -c 5 -r 3 --batch-size 5',
-                            ]}
-                            copy={`./mailgrid send \\\n    --csv contacts.csv \\\n    --template welcome.html \\\n    --subject "Welcome, {{.name}}!" \\\n    -c 5 -r 3 --batch-size 5`}
-                        />
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                            <CodeSnippet
-                                title="Preview"
-                                icon={<Monitor className="w-4 h-4"/>}
-                                lines={[
-                                    '# Local preview server',
-                                    '$ mailgrid --preview',
-                                    '# custom port + inputs',
-                                    '$ mailgrid -p --port 7070 \\\\',
-                                    '    --csv data/contacts.csv \\\\',
-                                    '    --template templates/offer.html',
-                                ]}
-                                copy={`mailgrid --preview`}
-                            />
-                            <CodeSnippet
-                                title="Schedule"
-                                icon={<CalendarClock className="w-4 h-4"/>}
-                                lines={[
-                                    '# One-off scheduled send (UTC)',
-                                    '$ mailgrid \\\\',
-                                    '    --env cfg/prod.json \\\\',
-                                    '    --csv example/test_contacts.csv \\\\',
-                                    '    -t example/welcome.html -s "Welcome {{.name}}" \\\\',
-                                    '    --schedule-at 2025-09-08T09:00:00Z',
-                                ]}
-                                copy={`mailgrid --schedule-at 2025-09-08T09:00:00Z`}
-                            />
-                        </div>
+                        {[{
+                            title: 'Fast & Reliable',
+                            desc: 'Concurrent sending with intelligent retries and batching.'
+                        }, {
+                            title: 'Personalization',
+                            desc: 'Go template syntax for dynamic, per-recipient content.'
+                        }, {
+                            title: 'Preview & Safety',
+                            desc: 'Preview locally and dry-run before sending at scale.'
+                        }].map((item, i) => (
+                            <div key={i} className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-5 text-left shadow-sm">
+                                <h4 className="text-sm font-semibold text-gray-900 dark:text-dark-foreground mb-1">{item.title}</h4>
+                                <p className="text-sm text-gray-600 dark:text-dark-muted">{item.desc}</p>
+                            </div>
+                        ))}
                     </motion.div>
                 </div>
-{showUiModal && (
-    <Suspense fallback={null}>
-        <ComingSoonModal
-            onClose={() => setShowUiModal(false)}
-            title="Under development"
-            message="MailGrid Desktop is under active development.<br/>Please check back soon or follow the repo for updates."
-        />
-    </Suspense>
-)}
-</section>
 
-{/* Features Section */}
+                {showUiModal && (
+                    <Suspense fallback={null}>
+                        <ComingSoonModal
+                            onClose={() => setShowUiModal(false)}
+                            title="Under development"
+                            message="MailGrid Desktop is under active development.<br/>Please check back soon or follow the repo for updates."
+                        />
+                    </Suspense>
+                )}
+            </section>
+
+            {/* How it Works */}
             <section className="max-w-6xl mx-auto px-4 py-16">
-<div className="text-center mb-12">
-                    <span className="text-xs font-semibold uppercase text-indigo-600 tracking-wide">🔧 Core Features</span>
-                    <h2 className="mt-2 text-4xl font-bold text-gray-900 dark:text-dark-foreground">Built for Speed, Simplicity & Scale</h2>
+                <div className="text-center mb-12">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        <span className="text-xs font-semibold uppercase text-indigo-600 tracking-wide">
+                            ⚡ Lightning Fast Setup
+                        </span>
+                        <h2 className="mt-2 text-4xl font-bold text-gray-900 dark:text-dark-foreground mb-4">
+                            From CSV to Delivered Emails
+                        </h2>
+                        <p className="mt-3 text-gray-600 dark:text-dark-muted text-sm max-w-xl mx-auto">
+                            Three simple steps. Endless possibilities. No complex setup required.
+                        </p>
+                    </motion.div>
+                </div>
+
+                <motion.div
+                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                        visible: {
+                            transition: {
+                                staggerChildren: 0.1,
+                            },
+                        },
+                    }}
+                >
+                    {[{
+                        title: 'Import & Connect',
+                        desc: 'Drop your CSV file or paste a Google Sheets URL. MailGrid automatically detects columns and validates email addresses.',
+                        icon: '📊',
+                        step: '1'
+                    }, {
+                        title: 'Personalize & Preview',
+                        desc: 'Design beautiful templates with dynamic placeholders. Preview how each recipient sees their personalized message.',
+                        icon: '🎨',
+                        step: '2'
+                    }, {
+                        title: 'Send & Track',
+                        desc: 'Configure delivery settings, apply smart filters, and watch real-time sending progress with detailed success metrics.',
+                        icon: '🚀',
+                        step: '3'
+                    }].map((process, i) => (
+                        <motion.div
+                            key={i}
+                            variants={{
+                                hidden: { opacity: 0, y: 20 },
+                                visible: { opacity: 1, y: 0 },
+                            }}
+                            transition={{ duration: 0.5 }}
+                            className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-6 shadow-sm hover:shadow-md transition"
+                        >
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="p-2 bg-gray-100 dark:bg-dark-subtle rounded-full">
+                                    <span className="text-2xl">{process.icon}</span>
+                                </div>
+                                <div>
+                                    <div className="text-xs font-semibold text-indigo-600 tracking-wide">STEP {process.step}</div>
+                                    <h3 className="text-base font-semibold text-gray-900 dark:text-dark-foreground">{process.title}</h3>
+                                </div>
+                            </div>
+                            <p className="text-sm text-gray-600 dark:text-dark-muted">{process.desc}</p>
+                        </motion.div>
+                    ))}
+                </motion.div>
+            </section>
+
+            {/* Smart Targeting */}
+            <section className="max-w-6xl mx-auto px-4 py-8">
+                <div className="text-center mb-12">
+                    <motion.div 
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        <span className="text-xs font-semibold uppercase text-indigo-600 tracking-wide">
+                            🎯 Precision Targeting
+                        </span>
+                        <h2 className="mt-2 text-4xl font-bold text-gray-900 dark:text-dark-foreground">
+                            Smart Filtering
+                        </h2>
+                        <p className="mt-3 text-gray-600 dark:text-dark-muted text-sm max-w-xl mx-auto">
+                            Powerful filtering that feels simple. Create complex audience segments with an intuitive approach.
+                        </p>
+                    </motion.div>
+                </div>
+
+                <motion.div
+                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                        visible: {
+                            transition: {
+                                staggerChildren: 0.1,
+                            },
+                        },
+                    }}
+                >
+                    {[{
+                        title: 'Behavioral Targeting',
+                        desc: 'Filter by engagement patterns, purchase history, and user activity to reach your most valuable segments.',
+                        icon: '📈'
+                    }, {
+                        title: 'Smart Combinations',
+                        desc: 'Mix and match conditions with AND/OR logic. Create complex rules that feel simple and intuitive.',
+                        icon: '🧠'
+                    }, {
+                        title: 'Real-time Preview',
+                        desc: 'See exactly how many recipients match your filters before sending. No surprises, just precision.',
+                        icon: '👀'
+                    }].map((feature, i) => (
+                        <motion.div
+                            key={i}
+                            variants={{
+                                hidden: { opacity: 0, y: 20 },
+                                visible: { opacity: 1, y: 0 },
+                            }}
+                            transition={{ duration: 0.5 }}
+                            className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-6 shadow-sm hover:shadow-md transition"
+                        >
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="p-2 bg-gray-100 dark:bg-dark-subtle rounded-full">
+                                    <span className="text-2xl">{feature.icon}</span>
+                                </div>
+                                <h3 className="text-base font-semibold text-gray-900 dark:text-dark-foreground">{feature.title}</h3>
+                            </div>
+                            <p className="text-sm text-gray-600 dark:text-dark-muted">{feature.desc}</p>
+                        </motion.div>
+                    ))}
+                </motion.div>
+            </section>
+
+            {/* Core Features */}
+            <section className="max-w-6xl mx-auto px-4 py-8">
+                <div className="text-center mb-12">
+                    <span className="text-xs font-semibold uppercase text-indigo-600 tracking-wide">
+                        🔧 Core Features
+                    </span>
+                    <h2 className="mt-2 text-4xl font-bold text-gray-900 dark:text-dark-foreground">
+                        Built for Speed, Simplicity & Scale
+                    </h2>
                     <p className="mt-3 text-gray-600 dark:text-dark-muted text-sm max-w-xl mx-auto">
                         Everything you need to orchestrate bulk email campaigns from CSV files or Google Sheets.
                     </p>
                 </div>
 
                 <motion.div
-className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
                     initial="hidden"
                     animate="visible"
                     variants={{
                         visible: {
                             transition: {
-                                staggerChildren: 0.15,
+                                staggerChildren: 0.1,
                             },
                         },
                     }}
@@ -207,44 +269,42 @@ className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
                             <motion.div
                                 key={i}
                                 variants={{
-                                    hidden: { opacity: 0, y: 30, scale: 0.9 },
-                                    visible: { opacity: 1, y: 0, scale: 1 },
+                                    hidden: { opacity: 0, y: 20 },
+                                    visible: { opacity: 1, y: 0 },
                                 }}
-                                transition={{ duration: 0.6, ease: "easeOut" }}
-className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-6 shadow-sm hover:shadow-md transition"
+                                transition={{ duration: 0.5 }}
+                                className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-6 shadow-sm hover:shadow-md transition"
                             >
-                                <div className="flex items-start gap-4 mb-6">
-<div className="p-2 bg-gray-100 dark:bg-dark-subtle rounded-full">
+                                <div className="flex items-center gap-3 mb-4">
+                                    <div className="p-2 bg-gray-100 dark:bg-dark-subtle rounded-full">
                                         <Icon className={`w-6 h-6 ${feat.color}`} />
                                     </div>
                                     <h3 className="text-base font-semibold text-gray-900 dark:text-dark-foreground">{feat.title}</h3>
                                 </div>
-<p className="text-sm text-gray-600 dark:text-dark-muted">
-                                    {feat.description}
-                                </p>
+                                <p className="text-sm text-gray-600 dark:text-dark-muted">{feat.description}</p>
                             </motion.div>
                         );
                     })}
                 </motion.div>
             </section>
 
-{/* Choose Your Experience */}
+            {/* Choose Your Experience */}
             <section className="max-w-6xl mx-auto px-4 py-16">
-<div className="text-center mb-12">
+                <div className="text-center mb-12">
                     <span className="text-xs font-semibold uppercase text-indigo-600 tracking-wide">✨ Choose Your Experience</span>
                     <h2 className="mt-2 text-4xl font-bold text-gray-900 dark:text-dark-foreground">CLI or Desktop</h2>
                 </div>
-                
+
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                     {/* CLI Version */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
-className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-6 shadow-sm hover:shadow-md transition"
+                        className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-6 shadow-sm hover:shadow-md transition"
                     >
                         <div className="flex items-center mb-6">
-<div className="p-2 bg-gray-100 dark:bg-dark-subtle rounded-full">
+                            <div className="p-2 bg-gray-100 dark:bg-dark-subtle rounded-full">
                                 <Terminal className="w-6 h-6 text-green-600 dark:text-green-400" />
                             </div>
                             <div className="ml-3">
@@ -253,12 +313,12 @@ className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-bo
                                 </h3>
                             </div>
                         </div>
-<p className="text-sm text-gray-600 dark:text-dark-muted mb-4">
-                            Ultra-lightweight command-line tool for developers who love terminal workflows. 
-                            Perfect for automation, CI/CD pipelines, and power users.
+                        <p className="text-sm text-gray-600 dark:text-dark-muted mb-4">
+                            Ultra-lightweight tool for developers who prefer streamlined, scriptable workflows.
+                            Ideal for automation and CI/CD.
                         </p>
                         <div className="flex items-center justify-between">
-<div className="inline-flex items-center px-3 py-1.5 bg-green-100 dark:bg-green-900/30 rounded-full">
+                            <div className="inline-flex items-center px-3 py-1.5 bg-green-100 dark:bg-green-900/30 rounded-full">
                                 <span className="text-green-800 dark:text-green-200 font-medium text-xs">
                                     ✅ Available Now
                                 </span>
@@ -271,10 +331,10 @@ className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-bo
                         initial={{ opacity: 0, x: 30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
-className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-6 shadow-sm hover:shadow-md transition"
+                        className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-6 shadow-sm hover:shadow-md transition"
                     >
                         <div className="flex items-center mb-6">
-<div className="p-2 bg-gray-100 dark:bg-dark-subtle rounded-full">
+                            <div className="p-2 bg-gray-100 dark:bg-dark-subtle rounded-full">
                                 <span className="text-purple-600 dark:text-purple-400 text-sm font-semibold">UI</span>
                             </div>
                             <div className="ml-3">
@@ -283,12 +343,11 @@ className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-bo
                                 </h3>
                             </div>
                         </div>
-<p className="text-sm text-gray-600 dark:text-dark-muted mb-4">
-                            Native desktop application for teams who prefer visual campaign management, 
-                            drag-and-drop templates, and collaborative workflows.
+                        <p className="text-sm text-gray-600 dark:text-dark-muted mb-4">
+                            Native app for teams who prefer visual campaign management, drag-and-drop templates, and collaboration.
                         </p>
                         <div className="flex items-center justify-between">
-<div className="inline-flex items-center px-3 py-1.5 bg-purple-100 dark:bg-purple-900/30 rounded-full">
+                            <div className="inline-flex items-center px-3 py-1.5 bg-purple-100 dark:bg-purple-900/30 rounded-full">
                                 <span className="text-purple-800 dark:text-purple-200 font-medium text-xs">
                                     🔨 In Production
                                 </span>
@@ -297,7 +356,7 @@ className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-bo
                     </motion.div>
                 </div>
 
-<motion.div
+                <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4 }}
@@ -308,7 +367,7 @@ className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-bo
                     </p>
                 </motion.div>
             </section>
-</>
+        </>
     );
 };
 
