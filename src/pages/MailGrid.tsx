@@ -54,9 +54,7 @@ const MailGrid = () => {
                             MailGrid Desktop
                         </button>
                         <a
-                            href="https://github.com/bravo1goingdark/mailgrid/blob/main/docs/docs.md"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href="/mailgrid/docs"
                             className="px-5 py-2.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 font-semibold rounded-lg transition inline-block text-center"
                         >
                             Documentation
@@ -430,6 +428,7 @@ const MailGrid = () => {
         </>
     );
 };
+
 
 const features = [
     {
