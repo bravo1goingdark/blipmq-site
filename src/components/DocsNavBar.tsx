@@ -226,8 +226,27 @@ const DocsNavBar = () => {
               placeholder="Search documentation..."
               value={searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
+              onFocus={() => searchQuery && setShowSearchResults(true)}
+              onBlur={() => setTimeout(() => setShowSearchResults(false), 150)}
               className="w-full pl-10 pr-4 py-2 bg-gray-50 dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
             />
+            
+            {/* Mobile Search Results Dropdown */}
+            {showSearchResults && searchResults.length > 0 && (
+              <div className="absolute top-full mt-2 w-full bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg shadow-lg z-50 max-h-64 overflow-y-auto">
+                {searchResults.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => handleSearchItemClick(item.id)}
+                    className="w-full text-left px-4 py-3 hover:bg-gray-50 dark:hover:bg-dark-hover border-b border-gray-100 dark:border-gray-800 last:border-b-0 transition-colors"
+                  >
+                    <div className="text-sm font-medium text-gray-900 dark:text-white">{item.title}</div>
+                    <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">{item.category}</div>
+                    <div className="text-xs text-gray-600 dark:text-gray-300 mt-1">{item.description}</div>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </nav>
@@ -242,6 +261,18 @@ const DocsNavBar = () => {
             className="md:hidden bg-white dark:bg-dark-background border-b border-gray-200 dark:border-dark-border"
           >
             <div className="px-4 py-6 space-y-6">
+              {/* Quick Navigation */}
+              <div className="pb-4 border-b border-gray-200 dark:border-dark-border">
+                <Link
+                  to="/mailgrid"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  <span>Back to MailGrid</span>
+                </Link>
+              </div>
+              
               {navigationItems.map((section) => (
                 <div key={section.title}>
                   <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
@@ -253,7 +284,8 @@ const DocsNavBar = () => {
                       <button
                         key={item.id}
                         onClick={() => {
-                          // TODO: Add navigation logic
+                          // Navigate to the section via URL hash
+                          window.location.hash = `#${item.id}`;
                           setIsMobileMenuOpen(false);
                         }}
                         className={`block w-full text-left text-sm py-2 rounded-md transition ${
@@ -276,7 +308,8 @@ const DocsNavBar = () => {
                     <button
                       key={item.id}
                       onClick={() => {
-                        // TODO: Add navigation logic
+                        // Navigate to the section via URL hash
+                        window.location.hash = `#${item.id}`;
                         setIsMobileMenuOpen(false);
                       }}
                       className={`block w-full text-left text-sm py-2 rounded-md transition ${
