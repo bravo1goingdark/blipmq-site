@@ -1,116 +1,206 @@
 import { motion } from 'motion/react';
 import { Terminal, Database, Zap, Filter, FileText, CalendarClock, Monitor } from 'lucide-react';
-import { useState, lazy, Suspense } from 'react';
-
-const ComingSoonModal = lazy(() => import('../components/ComingSoonModal.tsx'));
 
 const MailGrid = () => {
-    const [showUiModal, setShowUiModal] = useState(false);
     return (
         <>
             {/* Hero Section */}
-            <section className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 md:px-12 py-20">
-                <div className="text-center">
+            <section className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 md:px-12 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        initial={{ opacity: 0, y: -30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
                         className="mb-8"
                     >
-                        <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 rounded-full mb-6">
-                            <span className="text-indigo-700 dark:text-indigo-300 text-sm font-semibold">✨ Email Orchestrator</span>
+                        <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-100 to-blue-100 dark:from-green-900/20 dark:to-blue-900/20 rounded-full mb-6">
+                            <span className="text-green-700 dark:text-green-300 text-sm font-semibold">📧 Email Orchestrator</span>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6 text-gray-900 dark:text-dark-foreground">MailGrid</h1>
+                        <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6 text-gray-900 dark:text-dark-foreground">
+                            Send bulk emails <span className="text-green-600 dark:text-green-400">that actually reach</span> inboxes
+                        </h1>
                     </motion.div>
 
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3, duration: 0.6 }}
-                        className="text-lg text-gray-600 dark:text-dark-muted mb-8 max-w-2xl mx-auto"
+                        transition={{ delay: 0.2, duration: 0.6 }}
+                        className="text-lg text-gray-600 dark:text-dark-muted mb-8"
                     >
-                        MailGrid is a high-performance email orchestrator. Bring recipients from CSV or Google Sheets, personalize with Go-style templates, and deliver via any SMTP provider.
+                        MailGrid transforms your CSV files and Google Sheets into personalized email campaigns. 
+                        <strong className="text-gray-900 dark:text-dark-foreground"> Built for developers who need reliability, speed, and zero vendor lock-in.</strong>
                     </motion.p>
 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.5, duration: 0.6 }}
-                        className="flex flex-col sm:flex-row gap-4 justify-center mb-8"
+                        transition={{ delay: 0.4, duration: 0.6 }}
+                        className="flex flex-col sm:flex-row gap-3 mb-8"
                     >
                         <a
                             href="https://github.com/bravo1goingdark/mailgrid/releases"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-5 py-2.5 bg-indigo-600 dark:bg-indigo-500 text-white font-semibold rounded-lg shadow hover:bg-indigo-700 dark:hover:bg-indigo-600 transition inline-block text-center"
+                            className="px-5 py-2.5 bg-green-600 dark:bg-green-500 text-white font-semibold rounded-lg shadow hover:bg-green-700 dark:hover:bg-green-600 transition inline-block text-center"
                         >
-                            Get MailGrid
+                            Download MailGrid
                         </a>
-                        <button
-                            type="button"
-                            onClick={() => setShowUiModal(true)}
-                            className="px-5 py-2.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 font-semibold rounded-lg transition inline-block text-center"
-                        >
-                            MailGrid Desktop
-                        </button>
                         <a
                             href="/mailgrid/docs"
                             className="px-5 py-2.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 font-semibold rounded-lg transition inline-block text-center"
                         >
-                            Documentation
+                            View Documentation
                         </a>
                     </motion.div>
 
-                    {/* Unique Selling Points */}
+                    {/* Key Stats/Features */}
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.7, duration: 0.6 }}
-                        className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6"
+                        transition={{ delay: 0.6, duration: 0.6 }}
+                        className="flex flex-wrap gap-6 text-sm"
                     >
-                        {[{
-                            title: 'Smart Scheduling',
-                            desc: 'Set-and-forget campaign scheduling with timezone awareness. Schedule once, deliver perfectly timed across global audiences.',
-                            icon: '📅',
-                            highlight: 'Schedule campaigns weeks ahead'
-                        }, {
-                            title: '99.7% Delivery Rate',
-                            desc: 'Industry-leading delivery success with intelligent retry logic and SMTP optimization that actually works.',
-                            icon: '🎯',
-                            highlight: 'Higher than most ESPs'
-                        }, {
-                            title: 'Zero Monthly Fees',
-                            desc: 'Own your email infrastructure. No per-email costs, no monthly subscriptions. Pay once, send millions forever.',
-                            icon: '💰',
-                            highlight: 'Save thousands annually'
-                        }].map((item, i) => (
-                            <div key={i} className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-6 shadow-sm hover:shadow-lg transition-all duration-300 group">
-                                <div className="flex items-center gap-3 mb-3">
-                                    <div className="p-2 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-full group-hover:scale-110 transition-transform">
-                                        <span className="text-2xl">{item.icon}</span>
-                                    </div>
-                                    <h4 className="text-base font-semibold text-gray-900 dark:text-dark-foreground group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">{item.title}</h4>
-                                </div>
-                                <div className="mb-3">
-                                    <span className="text-xs font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 px-2 py-1 rounded-full">
-                                        {item.highlight}
-                                    </span>
-                                </div>
-                                <p className="text-sm text-gray-600 dark:text-dark-muted leading-relaxed">{item.desc}</p>
-                            </div>
-                        ))}
+                        <div className="flex items-center gap-2">
+                            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span className="text-gray-600 dark:text-dark-muted"><strong className="text-gray-900 dark:text-dark-foreground">99.7%</strong> delivery rate</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                            <span className="text-gray-600 dark:text-dark-muted"><strong className="text-gray-900 dark:text-dark-foreground">Zero</strong> monthly fees</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                            <span className="text-gray-600 dark:text-dark-muted"><strong className="text-gray-900 dark:text-dark-foreground">Open source</strong> forever</span>
+                        </div>
                     </motion.div>
                 </div>
 
-                {showUiModal && (
-                    <Suspense fallback={null}>
-                        <ComingSoonModal
-                            onClose={() => setShowUiModal(false)}
-                            title="Under development"
-                            message="MailGrid Desktop is under active development.<br/>Please check back soon or follow the repo for updates."
-                        />
-                    </Suspense>
-                )}
+                {/* Right Side - Feature Highlights */}
+                <div className="w-full flex flex-col gap-4">
+                    <motion.h3
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.15, duration: 0.4 }}
+                        className="text-center text-sm md:text-2xl font-bold tracking-tight text-green-800 dark:text-green-400 mb-4"
+                    >
+                        Built-in Superpowers 🚀
+                    </motion.h3>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3, duration: 0.4 }}
+                            className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/10 dark:to-emerald-900/10 border border-green-200 dark:border-green-800/30 rounded-lg p-4 text-center"
+                        >
+                            <div className="p-2 bg-green-100 dark:bg-green-900/20 rounded-full w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+                                <Database className="w-6 h-6 text-green-600 dark:text-green-400" />
+                            </div>
+                            <h4 className="font-semibold text-gray-900 dark:text-dark-foreground mb-2">CSV & Sheets Ready</h4>
+                            <p className="text-xs text-gray-600 dark:text-dark-muted">Import from files or Google Sheets instantly</p>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.4, duration: 0.4 }}
+                            className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/10 dark:to-cyan-900/10 border border-blue-200 dark:border-blue-800/30 rounded-lg p-4 text-center"
+                        >
+                            <div className="p-2 bg-blue-100 dark:bg-blue-900/20 rounded-full w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+                                <Zap className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                            </div>
+                            <h4 className="font-semibold text-gray-900 dark:text-dark-foreground mb-2">Lightning Fast</h4>
+                            <p className="text-xs text-gray-600 dark:text-dark-muted">Concurrent delivery with smart retries</p>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.5, duration: 0.4 }}
+                            className="bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-900/10 dark:to-indigo-900/10 border border-purple-200 dark:border-purple-800/30 rounded-lg p-4 text-center"
+                        >
+                            <div className="p-2 bg-purple-100 dark:bg-purple-900/20 rounded-full w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+                                <FileText className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+                            </div>
+                            <h4 className="font-semibold text-gray-900 dark:text-dark-foreground mb-2">Go Templates</h4>
+                            <p className="text-xs text-gray-600 dark:text-dark-muted">Powerful personalization engine</p>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.6, duration: 0.4 }}
+                            className="bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/10 dark:to-red-900/10 border border-orange-200 dark:border-orange-800/30 rounded-lg p-4 text-center"
+                        >
+                            <div className="p-2 bg-orange-100 dark:bg-orange-900/20 rounded-full w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+                                <CalendarClock className="w-6 h-6 text-orange-600 dark:text-orange-400" />
+                            </div>
+                            <h4 className="font-semibold text-gray-900 dark:text-dark-foreground mb-2">Smart Scheduling</h4>
+                            <p className="text-xs text-gray-600 dark:text-dark-muted">Cron jobs and timezone awareness</p>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Stats Section */}
+            <section className="max-w-6xl mx-auto px-4 py-8">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
+                    >
+                        {[{
+                            title: 'Enterprise Reliability',
+                            desc: 'Production-ready with 99.7% delivery success rate. Built-in retry logic, SMTP optimization, and error recovery that works.',
+                            icon: '🎯',
+                            highlight: 'Battle-tested reliability',
+                            gradient: 'from-green-50 to-emerald-50 dark:from-green-900/10 dark:to-emerald-900/10',
+                            border: 'border-green-200 dark:border-green-800/30',
+                            iconBg: 'bg-green-100 dark:bg-green-900/20',
+                            textColor: 'text-green-600 dark:text-green-400'
+                        }, {
+                            title: 'Zero Vendor Lock-in',
+                            desc: 'Own your email infrastructure forever. No per-email costs, no monthly subscriptions, no limits. Download once, use forever.',
+                            icon: '🔓',
+                            highlight: 'Own your data & infrastructure',
+                            gradient: 'from-blue-50 to-cyan-50 dark:from-blue-900/10 dark:to-cyan-900/10',
+                            border: 'border-blue-200 dark:border-blue-800/30',
+                            iconBg: 'bg-blue-100 dark:bg-blue-900/20',
+                            textColor: 'text-blue-600 dark:text-blue-400'
+                        }, {
+                            title: 'Developer Experience',
+                            desc: 'Powerful CLI with YAML config, Go templates, preview server, dry-run mode, and comprehensive docs. Made by devs, for devs.',
+                            icon: '🚀',
+                            highlight: 'CLI-first, automation-ready',
+                            gradient: 'from-purple-50 to-indigo-50 dark:from-purple-900/10 dark:to-indigo-900/10',
+                            border: 'border-purple-200 dark:border-purple-800/30',
+                            iconBg: 'bg-purple-100 dark:bg-purple-900/20',
+                            textColor: 'text-purple-600 dark:text-purple-400'
+                        }].map((item, i) => (
+                            <motion.div 
+                                key={i} 
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: i * 0.1, duration: 0.5 }}
+                                className={`bg-gradient-to-br ${item.gradient} border ${item.border} rounded-lg p-6 shadow-sm hover:shadow-lg transition-all duration-300 group`}
+                            >
+                                <div className="flex items-center gap-3 mb-3">
+                                    <div className={`p-2 ${item.iconBg} rounded-full group-hover:scale-110 transition-transform`}>
+                                        <span className="text-2xl">{item.icon}</span>
+                                    </div>
+                                    <h4 className={`text-base font-semibold text-gray-900 dark:text-dark-foreground group-hover:${item.textColor} transition-colors`}>{item.title}</h4>
+                                </div>
+                                <div className="mb-3">
+                                    <span className={`text-xs font-medium ${item.textColor} bg-white/50 dark:bg-gray-900/20 px-2 py-1 rounded-full`}>
+                                        {item.highlight}
+                                    </span>
+                                </div>
+                                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{item.desc}</p>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
             </section>
 
             {/* How it Works */}
@@ -302,128 +392,104 @@ const MailGrid = () => {
                 </motion.div>
             </section>
 
-            {/* Choose Your Experience */}
+            {/* Getting Started */}
             <section className="max-w-6xl mx-auto px-4 py-16">
                 <div className="text-center mb-12">
-                    <span className="text-xs font-semibold uppercase text-indigo-600 tracking-wide">✨ Choose Your Experience</span>
-                    <h2 className="mt-2 text-4xl font-bold text-gray-900 dark:text-dark-foreground">Free CLI or Premium Desktop</h2>
+                    <span className="text-xs font-semibold uppercase text-green-600 tracking-wide">✨ Ready to Start</span>
+                    <h2 className="mt-2 text-4xl font-bold text-gray-900 dark:text-dark-foreground">Download & Get Started</h2>
                     <p className="mt-3 text-gray-600 dark:text-dark-muted text-sm max-w-xl mx-auto">
-                        Start free with our powerful CLI, upgrade to Desktop for advanced team features.
+                        Everything you need to orchestrate email campaigns from CSV files and Google Sheets.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                    {/* CLI Version */}
+                <div className="max-w-4xl mx-auto">
+                    {/* CLI Version - Centered */}
                     <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        animate={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="bg-white dark:bg-dark-card border-2 border-green-200 dark:border-green-800 rounded-lg p-6 shadow-sm hover:shadow-lg transition-all duration-300 relative"
+                        className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/10 dark:to-emerald-900/10 border-2 border-green-200 dark:border-green-800 rounded-xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 relative"
                     >
-                        <div className="absolute -top-3 left-6">
-                            <span className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                                FREE FOREVER
+                        <div className="absolute -top-3 left-8">
+                            <span className="bg-green-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-sm">
+                                🎆 FREE & OPEN SOURCE
                             </span>
                         </div>
-                        <div className="flex items-center mb-6 mt-2">
-                            <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded-full">
-                                <Terminal className="w-6 h-6 text-green-600 dark:text-green-400" />
+                        <div className="flex items-center justify-center mb-8 mt-4">
+                            <div className="p-4 bg-green-100 dark:bg-green-900/20 rounded-full mr-6">
+                                <Terminal className="w-8 h-8 text-green-600 dark:text-green-400" />
                             </div>
-                            <div className="ml-4">
-                                <h3 className="text-xl font-bold text-gray-900 dark:text-dark-foreground">
+                            <div className="text-center">
+                                <h3 className="text-2xl font-bold text-gray-900 dark:text-dark-foreground mb-2">
                                     MailGrid CLI
                                 </h3>
-                                <div className="text-2xl font-bold text-green-600 dark:text-green-400">$0</div>
+                                <div className="text-3xl font-bold text-green-600 dark:text-green-400">$0 Forever</div>
                             </div>
                         </div>
-                        <ul className="text-sm text-gray-600 dark:text-dark-muted space-y-2 mb-6">
-                            <li className="flex items-center">
-                                <span className="text-green-500 mr-2">✓</span>
-                                All core features included
-                            </li>
-                            <li className="flex items-center">
-                                <span className="text-green-500 mr-2">✓</span>
-                                Unlimited emails & recipients
-                            </li>
-                            <li className="flex items-center">
-                                <span className="text-green-500 mr-2">✓</span>
-                                Perfect for developers & automation
-                            </li>
-                            <li className="flex items-center">
-                                <span className="text-green-500 mr-2">✓</span>
-                                Open source & community driven
-                            </li>
-                        </ul>
-                        <div className="flex items-center justify-between">
-                            <div className="inline-flex items-center px-3 py-1.5 bg-green-100 dark:bg-green-900/30 rounded-full">
-                                <span className="text-green-800 dark:text-green-200 font-medium text-xs">
-                                    ✅ Available Now
-                                </span>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <div className="space-y-3">
+                                <h4 className="font-semibold text-gray-900 dark:text-dark-foreground mb-3">🚀 Core Features</h4>
+                                <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+                                    <span className="text-green-500 mr-3 text-lg">✓</span>
+                                    CSV & Google Sheets import
+                                </div>
+                                <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+                                    <span className="text-green-500 mr-3 text-lg">✓</span>
+                                    Go template personalization
+                                </div>
+                                <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+                                    <span className="text-green-500 mr-3 text-lg">✓</span>
+                                    Any SMTP provider support
+                                </div>
+                                <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+                                    <span className="text-green-500 mr-3 text-lg">✓</span>
+                                    Advanced filtering & targeting
+                                </div>
+                            </div>
+                            <div className="space-y-3">
+                                <h4 className="font-semibold text-gray-900 dark:text-dark-foreground mb-3">🔧 Developer Tools</h4>
+                                <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+                                    <span className="text-green-500 mr-3 text-lg">✓</span>
+                                    Preview server & dry-run mode
+                                </div>
+                                <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+                                    <span className="text-green-500 mr-3 text-lg">✓</span>
+                                    Cron scheduling & automation
+                                </div>
+                                <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+                                    <span className="text-green-500 mr-3 text-lg">✓</span>
+                                    Concurrent delivery & retries
+                                </div>
+                                <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+                                    <span className="text-green-500 mr-3 text-lg">✓</span>
+                                    Comprehensive CLI & docs
+                                </div>
                             </div>
                         </div>
-                    </motion.div>
 
-                    {/* Desktop UI Version */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="bg-white dark:bg-dark-card border-2 border-purple-200 dark:border-purple-800 rounded-lg p-6 shadow-sm hover:shadow-lg transition-all duration-300 relative"
-                    >
-                        <div className="absolute -top-3 left-6">
-                            <span className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-                                PREMIUM
-                            </span>
-                        </div>
-                        <div className="flex items-center mb-6 mt-2">
-                            <div className="p-3 bg-purple-50 dark:bg-purple-900/20 rounded-full">
-                                <span className="text-purple-600 dark:text-purple-400 text-lg font-bold">UI</span>
-                            </div>
-                            <div className="ml-4">
-                                <h3 className="text-xl font-bold text-gray-900 dark:text-dark-foreground">
-                                    MailGrid Desktop
-                                </h3>
-                                <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">₹100 <span className="text-sm font-normal text-gray-500">/month</span></div>
-                            </div>
-                        </div>
-                        <ul className="text-sm text-gray-600 dark:text-dark-muted space-y-2 mb-6">
-                            <li className="flex items-center">
-                                <span className="text-purple-500 mr-2">✓</span>
-                                Everything in CLI + visual interface
-                            </li>
-                            <li className="flex items-center">
-                                <span className="text-purple-500 mr-2">✓</span>
-                                Drag & drop template builder
-                            </li>
-                            <li className="flex items-center">
-                                <span className="text-purple-500 mr-2">✓</span>
-                                Team collaboration features
-                            </li>
-                            <li className="flex items-center">
-                                <span className="text-purple-500 mr-2">✓</span>
-                                Advanced analytics dashboard
-                            </li>
-                        </ul>
-                        <div className="flex items-center justify-between">
-                            <div className="inline-flex items-center px-3 py-1.5 bg-purple-100 dark:bg-purple-900/30 rounded-full">
-                                <span className="text-purple-800 dark:text-purple-200 font-medium text-xs">
-                                    🔨 Coming Soon
-                                </span>
-                            </div>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                            <a
+                                href="https://github.com/bravo1goingdark/mailgrid/releases"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-6 py-3 bg-green-600 dark:bg-green-500 text-white font-semibold rounded-lg shadow hover:bg-green-700 dark:hover:bg-green-600 transition inline-flex items-center gap-2"
+                            >
+                                <span>📦</span>
+                                Download Latest Release
+                            </a>
+                            <a
+                                href="https://github.com/bravo1goingdark/mailgrid"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-6 py-3 border border-green-300 dark:border-green-600 text-green-700 dark:text-green-300 hover:bg-green-50 dark:hover:bg-green-900/20 font-semibold rounded-lg transition inline-flex items-center gap-2"
+                            >
+                                <span>🐈</span>
+                                View on GitHub
+                            </a>
                         </div>
                     </motion.div>
                 </div>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="text-center mt-8"
-                >
-                    <p className="text-sm text-gray-600 dark:text-dark-muted max-w-2xl mx-auto">
-                        Both versions share the same powerful core: CSV/Google Sheets integration, Go templating, and SMTP flexibility.
-                    </p>
-                </motion.div>
             </section>
         </>
     );
