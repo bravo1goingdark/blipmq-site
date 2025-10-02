@@ -44,15 +44,13 @@ const NavBar = () => {
                             Features
                         </Link>
 
-                        <button
-                            onClick={() => {
-                                trackEvent('click', 'navigation', 'docs_button');
-                                setShowComingSoonModal(true);
-                            }}
+                        <Link
+                            to="/blipmq/docs"
+                            onClick={() => trackEvent('click', 'navigation', 'docs_button')}
                             className="cursor-pointer text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition"
                         >
                             Docs
-                        </button>
+                        </Link>
 
                         <div className="relative">
                             <button
@@ -157,15 +155,16 @@ const NavBar = () => {
                             Features
                         </Link>
 
-                        <button
+                        <Link
+                            to="/blipmq/docs"
                             onClick={() => {
                                 trackEvent('click', 'navigation', 'docs_button_mobile');
-                                setShowComingSoonModal(true);
+                                setIsOpen(false);
                             }}
                             className="block w-full text-left px-3 py-2 rounded-md text-gray-700 hover:text-black hover:bg-gray-100"
                         >
                             Docs
-                        </button>
+                        </Link>
 
                         <Link
                             to="/mailgrid"

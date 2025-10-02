@@ -10,11 +10,12 @@ const Highlights = lazy(() => import("./components/HighLights.tsx"));
 const EssentialFeatures = lazy(() => import("./components/Features.tsx"));
 const MailGrid = lazy(() => import('./pages/MailGrid.tsx'));
 const MailGridDocs = lazy(() => import('./pages/MailGridDocs.tsx'));
+const BlipMQDocs = lazy(() => import('./pages/BlipMQDocs.tsx'));
 const Footer = lazy(() => import('./components/Footer.tsx'))
 const App = () => {
     usePageTracking();
     const location = useLocation();
-    const isDocsPage = location.pathname.startsWith('/mailgrid/docs');
+    const isDocsPage = location.pathname.startsWith('/mailgrid/docs') || location.pathname.startsWith('/blipmq/docs');
 
     useEffect(() => {
         ReactGA.initialize('G-GYSKWL9VDK');
@@ -34,6 +35,7 @@ const App = () => {
                             <Route path="/features" element={<EssentialFeatures />} />
                             <Route path="/mailgrid" element={<MailGrid />} />
                             <Route path="/mailgrid/docs" element={<MailGridDocs />} />
+                            <Route path="/blipmq/docs" element={<BlipMQDocs />} />
                         </Routes>
                     </Suspense>
                 </main>
