@@ -170,7 +170,7 @@ const MailGrid = () => {
                             textColor: 'text-blue-600 dark:text-blue-400'
                         }, {
                             title: 'Developer Experience',
-                            desc: 'Powerful CLI with YAML config, Go templates, preview server, dry-run mode, and comprehensive docs. Made by devs, for devs.',
+                            desc: 'Powerful CLI with JSON config, Go templates, preview server, dry-run mode, and comprehensive docs. Made by devs, for devs.',
                             icon: '🚀',
                             highlight: 'CLI-first, automation-ready',
                             gradient: 'from-purple-50 to-indigo-50 dark:from-purple-900/10 dark:to-indigo-900/10',
@@ -200,7 +200,6 @@ const MailGrid = () => {
                             </motion.div>
                         ))}
                     </motion.div>
-                </div>
             </section>
 
             {/* How it Works */}
@@ -392,13 +391,13 @@ const MailGrid = () => {
                 </motion.div>
             </section>
 
-            {/* Getting Started */}
+            {/* Getting Started - CLI */}
             <section className="max-w-6xl mx-auto px-4 py-16">
                 <div className="text-center mb-12">
                     <span className="text-xs font-semibold uppercase text-green-600 tracking-wide">✨ Ready to Start</span>
-                    <h2 className="mt-2 text-4xl font-bold text-gray-900 dark:text-dark-foreground">Download & Get Started</h2>
+                    <h2 className="mt-2 text-4xl font-bold text-gray-900 dark:text-dark-foreground">Download CLI & Get Started</h2>
                     <p className="mt-3 text-gray-600 dark:text-dark-muted text-sm max-w-xl mx-auto">
-                        Everything you need to orchestrate email campaigns from CSV files and Google Sheets.
+                        Start with the powerful CLI version - everything you need to orchestrate email campaigns from CSV files and Google Sheets.
                     </p>
                 </div>
 
@@ -487,6 +486,223 @@ const MailGrid = () => {
                                 <span>🐈</span>
                                 View on GitHub
                             </a>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* Comparison Table */}
+            <section className="max-w-6xl mx-auto px-4 py-16">
+                <div className="text-center mb-12">
+                    <span className="text-xs font-semibold uppercase text-blue-600 tracking-wide">📊 Comparison</span>
+                    <h2 className="mt-2 text-4xl font-bold text-gray-900 dark:text-dark-foreground">MailGrid vs Alternatives</h2>
+                    <p className="mt-3 text-gray-600 dark:text-dark-muted text-sm max-w-2xl mx-auto">
+                        See how MailGrid compares to popular email service providers and tools.
+                    </p>
+                </div>
+
+                <div className="overflow-x-auto">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-xl shadow-sm"
+                    >
+                        <table className="w-full text-sm">
+                            <thead>
+                                <tr className="border-b border-gray-200 dark:border-dark-border">
+                                    <th className="text-left p-4 font-semibold text-gray-900 dark:text-dark-foreground">Feature</th>
+                                    <th className="text-center p-4 font-semibold text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-900/10">MailGrid</th>
+                                    <th className="text-center p-4 font-semibold text-gray-700 dark:text-gray-300">Mailgun</th>
+                                    <th className="text-center p-4 font-semibold text-gray-700 dark:text-gray-300">SendGrid</th>
+                                    <th className="text-center p-4 font-semibold text-gray-700 dark:text-gray-300">AWS SES</th>
+                                    <th className="text-center p-4 font-semibold text-gray-700 dark:text-gray-300">Postmark</th>
+                                </tr>
+                            </thead>
+                            <tbody className="text-sm">
+                                <tr className="border-b border-gray-100 dark:border-gray-800">
+                                    <td className="p-4 font-medium text-gray-900 dark:text-dark-foreground">Monthly Cost</td>
+                                    <td className="text-center p-4 bg-green-50 dark:bg-green-900/10 text-green-700 dark:text-green-400 font-semibold">$0 Forever</td>
+                                    <td className="text-center p-4 text-gray-600 dark:text-gray-400">$35+/mo</td>
+                                    <td className="text-center p-4 text-gray-600 dark:text-gray-400">$20+/mo</td>
+                                    <td className="text-center p-4 text-gray-600 dark:text-gray-400">Pay per use</td>
+                                    <td className="text-center p-4 text-gray-600 dark:text-gray-400">$15+/mo</td>
+                                </tr>
+                                <tr className="border-b border-gray-100 dark:border-gray-800">
+                                    <td className="p-4 font-medium text-gray-900 dark:text-dark-foreground">Email Limits</td>
+                                    <td className="text-center p-4 bg-green-50 dark:bg-green-900/10 text-green-700 dark:text-green-400 font-semibold">Unlimited</td>
+                                    <td className="text-center p-4 text-gray-600 dark:text-gray-400">10K-50K/mo</td>
+                                    <td className="text-center p-4 text-gray-600 dark:text-gray-400">40K-100K/mo</td>
+                                    <td className="text-center p-4 text-gray-600 dark:text-gray-400">Unlimited*</td>
+                                    <td className="text-center p-4 text-gray-600 dark:text-gray-400">10K-100K/mo</td>
+                                </tr>
+                                <tr className="border-b border-gray-100 dark:border-gray-800">
+                                    <td className="p-4 font-medium text-gray-900 dark:text-dark-foreground">Data Ownership</td>
+                                    <td className="text-center p-4 bg-green-50 dark:bg-green-900/10 text-green-700 dark:text-green-400 font-semibold">✓ Full Control</td>
+                                    <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Vendor Lock</td>
+                                    <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Vendor Lock</td>
+                                    <td className="text-center p-4 text-yellow-600 dark:text-yellow-400">⚠ AWS Lock</td>
+                                    <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Vendor Lock</td>
+                                </tr>
+                                <tr className="border-b border-gray-100 dark:border-gray-800">
+                                    <td className="p-4 font-medium text-gray-900 dark:text-dark-foreground">CSV/Sheets Import</td>
+                                    <td className="text-center p-4 bg-green-50 dark:bg-green-900/10 text-green-700 dark:text-green-400 font-semibold">✓ Built-in</td>
+                                    <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Manual</td>
+                                    <td className="text-center p-4 text-yellow-600 dark:text-yellow-400">⚠ Limited</td>
+                                    <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Manual</td>
+                                    <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Manual</td>
+                                </tr>
+                                <tr className="border-b border-gray-100 dark:border-gray-800">
+                                    <td className="p-4 font-medium text-gray-900 dark:text-dark-foreground">Template Engine</td>
+                                    <td className="text-center p-4 bg-green-50 dark:bg-green-900/10 text-green-700 dark:text-green-400 font-semibold">✓ Go Templates</td>
+                                    <td className="text-center p-4 text-yellow-600 dark:text-yellow-400">⚠ Basic</td>
+                                    <td className="text-center p-4 text-yellow-600 dark:text-yellow-400">⚠ Basic</td>
+                                    <td className="text-center p-4 text-red-600 dark:text-red-400">✗ None</td>
+                                    <td className="text-center p-4 text-yellow-600 dark:text-yellow-400">⚠ Basic</td>
+                                </tr>
+                                <tr className="border-b border-gray-100 dark:border-gray-800">
+                                    <td className="p-4 font-medium text-gray-900 dark:text-dark-foreground">Preview & Testing</td>
+                                    <td className="text-center p-4 bg-green-50 dark:bg-green-900/10 text-green-700 dark:text-green-400 font-semibold">✓ Full Suite</td>
+                                    <td className="text-center p-4 text-yellow-600 dark:text-yellow-400">⚠ Limited</td>
+                                    <td className="text-center p-4 text-yellow-600 dark:text-yellow-400">⚠ Basic</td>
+                                    <td className="text-center p-4 text-red-600 dark:text-red-400">✗ None</td>
+                                    <td className="text-center p-4 text-yellow-600 dark:text-yellow-400">⚠ Basic</td>
+                                </tr>
+                                <tr className="border-b border-gray-100 dark:border-gray-800">
+                                    <td className="p-4 font-medium text-gray-900 dark:text-dark-foreground">Self-Hosted</td>
+                                    <td className="text-center p-4 bg-green-50 dark:bg-green-900/10 text-green-700 dark:text-green-400 font-semibold">✓ Always</td>
+                                    <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Cloud Only</td>
+                                    <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Cloud Only</td>
+                                    <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Cloud Only</td>
+                                    <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Cloud Only</td>
+                                </tr>
+                                <tr>
+                                    <td className="p-4 font-medium text-gray-900 dark:text-dark-foreground">Open Source</td>
+                                    <td className="text-center p-4 bg-green-50 dark:bg-green-900/10 text-green-700 dark:text-green-400 font-semibold">✓ MIT License</td>
+                                    <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Proprietary</td>
+                                    <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Proprietary</td>
+                                    <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Proprietary</td>
+                                    <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Proprietary</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div className="p-4 bg-gray-50 dark:bg-gray-800/50 rounded-b-xl">
+                            <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
+                                * AWS SES requires technical setup and management. Pricing varies by usage.
+                            </p>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* UI Coming Soon */}
+            <section className="max-w-6xl mx-auto px-4 py-16">
+                <div className="text-center mb-12">
+                    <span className="text-xs font-semibold uppercase text-purple-600 tracking-wide">🚀 What's Next</span>
+                    <h2 className="mt-2 text-4xl font-bold text-gray-900 dark:text-dark-foreground">MailGrid UI Coming Soon</h2>
+                    <p className="mt-3 text-gray-600 dark:text-dark-muted text-sm max-w-2xl mx-auto">
+                        Beautiful desktop UI built with Wails + React + TailwindCSS + Framer Motion. Brings all of MailGrid's power to a visual interface with powerful local-first control. Perfect for teams and non-technical users.
+                    </p>
+                </div>
+
+                <div className="max-w-4xl mx-auto mb-16">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-900/10 dark:to-indigo-900/10 border-2 border-purple-200 dark:border-purple-800 rounded-xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 relative overflow-hidden"
+                    >
+                        {/* Background decoration */}
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-purple-100 dark:bg-purple-900/20 rounded-full -translate-y-16 translate-x-16 opacity-50"></div>
+                        <div className="absolute bottom-0 left-0 w-24 h-24 bg-indigo-100 dark:bg-indigo-900/20 rounded-full translate-y-12 -translate-x-12 opacity-50"></div>
+                        
+                        <div className="relative z-10">
+                            <div className="absolute -top-3 left-8">
+                                <span className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-sm">
+                                    🎨 DESKTOP APPLICATION
+                                </span>
+                            </div>
+                            
+                            <div className="flex items-center justify-center mb-8 mt-4">
+                                <div className="p-4 bg-purple-100 dark:bg-purple-900/20 rounded-full mr-6">
+                                    <span className="text-purple-600 dark:text-purple-400 text-2xl font-bold">💻</span>
+                                </div>
+                                <div className="text-center">
+                                    <h3 className="text-2xl font-bold text-gray-900 dark:text-dark-foreground mb-2">
+                                        MailGrid Desktop UI
+                                    </h3>
+                                    <div className="text-2xl font-bold text-purple-600 dark:text-purple-400 mb-1">₹199 <span className="text-sm font-normal text-gray-500 dark:text-gray-400">/month</span></div>
+                                    <div className="text-sm font-medium text-purple-600 dark:text-purple-400">🔨 In Development</div>
+                                </div>
+                            </div>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                <div className="space-y-3">
+                                    <h4 className="font-semibold text-gray-900 dark:text-dark-foreground mb-3">🎨 Visual Interface</h4>
+                                    <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+                                        <span className="text-purple-500 mr-3 text-lg">✓</span>
+                                        Drag & drop template builder
+                                    </div>
+                                    <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+                                        <span className="text-purple-500 mr-3 text-lg">✓</span>
+                                        Visual CSV import & preview
+                                    </div>
+                                    <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+                                        <span className="text-purple-500 mr-3 text-lg">✓</span>
+                                        Interactive campaign builder
+                                    </div>
+                                    <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+                                        <span className="text-purple-500 mr-3 text-lg">✓</span>
+                                        Real-time template preview
+                                    </div>
+                                </div>
+                                <div className="space-y-3">
+                                    <h4 className="font-semibold text-gray-900 dark:text-dark-foreground mb-3">🚀 Enhanced Features</h4>
+                                    <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+                                        <span className="text-purple-500 mr-3 text-lg">✓</span>
+                                        Advanced analytics dashboard
+                                    </div>
+                                    <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+                                        <span className="text-purple-500 mr-3 text-lg">✓</span>
+                                        Team collaboration tools
+                                    </div>
+                                    <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+                                        <span className="text-purple-500 mr-3 text-lg">✓</span>
+                                        Campaign scheduling interface
+                                    </div>
+                                    <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+                                        <span className="text-purple-500 mr-3 text-lg">✓</span>
+                                        All CLI features + more
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                                <a
+                                    href="https://github.com/bravo1goingdark/mailgrid-ui"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="px-6 py-3 bg-purple-600 dark:bg-purple-500 text-white font-semibold rounded-lg shadow hover:bg-purple-700 dark:hover:bg-purple-600 transition inline-flex items-center gap-2"
+                                >
+                                    <span>🐈</span>
+                                    View UI Repository
+                                </a>
+                                <a
+                                    href="https://github.com/bravo1goingdark/mailgrid-ui/issues"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="px-6 py-3 border border-purple-300 dark:border-purple-600 text-purple-700 dark:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-900/20 font-semibold rounded-lg transition inline-flex items-center gap-2"
+                                >
+                                    <span>💬</span>
+                                    Request Features
+                                </a>
+                            </div>
+                            
+                            <div className="text-center mt-6">
+                                <p className="text-sm text-purple-600 dark:text-purple-400 font-medium">
+                                    Want early access? 🚀 <a href="https://github.com/bravo1goingdark/mailgrid-ui" className="underline hover:no-underline" target="_blank" rel="noopener noreferrer">Star the UI repo</a> to get notified!
+                                </p>
+                            </div>
                         </div>
                     </motion.div>
                 </div>
