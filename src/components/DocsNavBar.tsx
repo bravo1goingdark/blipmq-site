@@ -23,6 +23,14 @@ const DocsNavBar = () => {
   const [searchResults, setSearchResults] = useState<Array<{id: string, title: string, description: string, category: string}>>([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
   const location = useLocation();
+  
+  // Determine if this is BlipMQ or MailGrid docs
+  const isBlipMQDocs = location.pathname.startsWith('/blipmq/docs');
+  const isMailGridDocs = location.pathname.startsWith('/mailgrid/docs');
+  
+  const productName = isBlipMQDocs ? 'BlipMQ' : 'MailGrid';
+  const productPath = isBlipMQDocs ? '/' : '/mailgrid';
+  const githubRepo = isBlipMQDocs ? 'blipmq' : 'mailgrid';
 
   const navigationItems = [
     {
@@ -81,7 +89,7 @@ const DocsNavBar = () => {
         return { category: 'Examples', ...item };
       }
     }
-    return { category: 'Documentation', title: 'Introduction', description: 'Get started with MailGrid' };
+    return { category: 'Documentation', title: 'Introduction', description: `Get started with ${productName}` };
   };
 
   const currentSection = getCurrentSectionInfo();
@@ -141,13 +149,17 @@ const DocsNavBar = () => {
               
               <div className="hidden md:flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
                 <span>/</span>
-                <Link 
-                  to="/mailgrid" 
-                  className="hover:text-gray-700 dark:hover:text-gray-300 transition"
-                >
-                  MailGrid
-                </Link>
-                <span>/</span>
+                {!isBlipMQDocs && (
+                  <>
+                    <Link 
+                      to={productPath} 
+                      className="hover:text-gray-700 dark:hover:text-gray-300 transition"
+                    >
+                      {productName}
+                    </Link>
+                    <span>/</span>
+                  </>
+                )}
                 <span className="text-gray-900 dark:text-white font-medium">Documentation</span>
               </div>
             </div>
@@ -187,16 +199,18 @@ const DocsNavBar = () => {
 
             {/* Right: Actions */}
             <div className="flex items-center space-x-4">
-              <Link
-                to="/mailgrid"
-                className="hidden md:flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition text-sm"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                <span>Back to MailGrid</span>
-              </Link>
+              {!isBlipMQDocs && (
+                <Link
+                  to={productPath}
+                  className="hidden md:flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition text-sm"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  <span>Back to {productName}</span>
+                </Link>
+              )}
 
               <a
-                href="https://github.com/bravo1goingdark/mailgrid"
+                href={`https://github.com/bravo1goingdark/${githubRepo}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition text-sm"
