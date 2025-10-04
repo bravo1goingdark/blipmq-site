@@ -937,6 +937,164 @@ const ConfigurationContent = ({ copyToClipboard, copiedCode }: { copyToClipboard
         </div>
       </div>
 
+      <div>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-dark-foreground mb-4">BYOK (Bring Your Own Keys) Setup</h2>
+        <p className="text-gray-600 dark:text-dark-muted mb-6">
+          MailGrid's BYOK approach means you can use your own SMTP credentials with any provider. This gives you complete 
+          control over your email infrastructure, better deliverability, and often lower costs.
+        </p>
+        
+        <div className="space-y-6">
+          <div className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-6">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-dark-foreground mb-4 flex items-center gap-2">
+              <span className="bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 px-2 py-1 rounded text-sm">🚀</span>
+              AWS SES Configuration
+            </h3>
+            <p className="text-gray-600 dark:text-dark-muted mb-4 text-sm">
+              AWS Simple Email Service offers high deliverability and cost-effective pricing. Create IAM credentials with SES permissions.
+            </p>
+            <div className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-4">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">aws-ses-config.json</span>
+                <button
+                  onClick={() => copyToClipboard('{\n  "host": "email-smtp.us-east-1.amazonaws.com",\n  "port": 587,\n  "username": "AKIA...",\n  "password": "your-smtp-password",\n  "from": "your-verified@domain.com"\n}', 'aws-ses-config')}
+                  className="p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                >
+                  {copiedCode === 'aws-ses-config' ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                </button>
+              </div>
+              <div className="bg-gray-900 dark:bg-gray-800 rounded p-3">
+                <pre className="text-green-400 text-sm">
+{`{
+  "host": "email-smtp.us-east-1.amazonaws.com",
+  "port": 587,
+  "username": "AKIA...",
+  "password": "your-smtp-password",
+  "from": "your-verified@domain.com"
+}`}
+                </pre>
+              </div>
+            </div>
+            <div className="mt-4 bg-orange-50 dark:bg-orange-900/10 border-l-4 border-orange-500 p-3">
+              <p className="text-orange-700 dark:text-orange-300 text-sm">
+                📝 <strong>Setup Steps:</strong> 1) Verify your domain in SES 2) Create SMTP credentials in IAM 3) Move out of sandbox mode for production
+              </p>
+            </div>
+          </div>
+          
+          <div className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-6">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-dark-foreground mb-4 flex items-center gap-2">
+              <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-2 py-1 rounded text-sm">📨</span>
+              SendGrid BYOK Setup
+            </h3>
+            <p className="text-gray-600 dark:text-dark-muted mb-4 text-sm">
+              Use SendGrid's reliable infrastructure with your own API key. Often cheaper than their platform pricing.
+            </p>
+            <div className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-4">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">sendgrid-config.json</span>
+                <button
+                  onClick={() => copyToClipboard('{\n  "host": "smtp.sendgrid.net",\n  "port": 587,\n  "username": "apikey",\n  "password": "SG.your-api-key-here",\n  "from": "your-verified@domain.com"\n}', 'sendgrid-config')}
+                  className="p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                >
+                  {copiedCode === 'sendgrid-config' ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                </button>
+              </div>
+              <div className="bg-gray-900 dark:bg-gray-800 rounded p-3">
+                <pre className="text-green-400 text-sm">
+{`{
+  "host": "smtp.sendgrid.net",
+  "port": 587,
+  "username": "apikey",
+  "password": "SG.your-api-key-here",
+  "from": "your-verified@domain.com"
+}`}
+                </pre>
+              </div>
+            </div>
+            <div className="mt-4 bg-blue-50 dark:bg-blue-900/10 border-l-4 border-blue-500 p-3">
+              <p className="text-blue-700 dark:text-blue-300 text-sm">
+                🔑 <strong>Note:</strong> Username is always "apikey" - use your SendGrid API key as the password
+              </p>
+            </div>
+          </div>
+          
+          <div className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-6">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-dark-foreground mb-4 flex items-center gap-2">
+              <span className="bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 px-2 py-1 rounded text-sm">🔧</span>
+              Mailgun SMTP Setup
+            </h3>
+            <p className="text-gray-600 dark:text-dark-muted mb-4 text-sm">
+              Use Mailgun's powerful sending infrastructure with SMTP. Great for high-volume campaigns.
+            </p>
+            <div className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-4">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">mailgun-config.json</span>
+                <button
+                  onClick={() => copyToClipboard('{\n  "host": "smtp.mailgun.org",\n  "port": 587,\n  "username": "postmaster@your-domain.com",\n  "password": "your-smtp-password",\n  "from": "your-verified@domain.com"\n}', 'mailgun-config')}
+                  className="p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                >
+                  {copiedCode === 'mailgun-config' ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                </button>
+              </div>
+              <div className="bg-gray-900 dark:bg-gray-800 rounded p-3">
+                <pre className="text-green-400 text-sm">
+{`{
+  "host": "smtp.mailgun.org",
+  "port": 587,
+  "username": "postmaster@your-domain.com",
+  "password": "your-smtp-password",
+  "from": "your-verified@domain.com"
+}`}
+                </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-dark-foreground mb-4">Environment Variables Setup</h2>
+        <p className="text-gray-600 dark:text-dark-muted mb-4">
+          For production environments, store sensitive credentials in environment variables instead of config files.
+        </p>
+        
+        <div className="bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border rounded-lg p-4 mb-6">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Environment Variables</span>
+            <button
+              onClick={() => copyToClipboard('export SMTP_HOST="smtp.gmail.com"\nexport SMTP_PORT=587\nexport SMTP_USER="your-email@gmail.com"\nexport SMTP_PASS="your-app-password"\nexport FROM_EMAIL="your-email@gmail.com"', 'env-vars')}
+              className="p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+            >
+              {copiedCode === 'env-vars' ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+            </button>
+          </div>
+          <div className="bg-gray-900 dark:bg-gray-800 rounded p-3">
+            <pre className="text-green-400 text-sm">
+{`# Set environment variables
+export SMTP_HOST="smtp.gmail.com"
+export SMTP_PORT=587
+export SMTP_USER="your-email@gmail.com"
+export SMTP_PASS="your-app-password"
+export FROM_EMAIL="your-email@gmail.com"
+
+# Then use with MailGrid
+mailgrid --csv recipients.csv --template email.html --subject "Hello!"`}
+            </pre>
+          </div>
+        </div>
+        
+        <div className="bg-green-50 dark:bg-green-900/10 border border-green-200 dark:border-green-800/30 rounded-lg p-4 mb-6">
+          <h4 className="font-semibold text-green-800 dark:text-green-200 mb-2">🛡️ Security Benefits</h4>
+          <ul className="text-green-700 dark:text-green-300 text-sm space-y-1">
+            <li>• Credentials never stored in version control</li>
+            <li>• Easy credential rotation without code changes</li>
+            <li>• Different configs for dev/staging/production</li>
+            <li>• Works seamlessly with CI/CD pipelines</li>
+          </ul>
+        </div>
+      </div>
+
       <div className="bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-200 dark:border-yellow-800/30 rounded-lg p-6">
         <h3 className="font-semibold text-yellow-800 dark:text-yellow-200 mb-2">📧 Email Security Tips</h3>
         <ul className="text-yellow-700 dark:text-yellow-300 text-sm space-y-1">
@@ -944,6 +1102,8 @@ const ConfigurationContent = ({ copyToClipboard, copiedCode }: { copyToClipboard
           <li>• Enable 2FA on your email provider for better security</li>
           <li>• Store SMTP credentials in environment variables in production</li>
           <li>• Test with a small batch before sending large campaigns</li>
+          <li>• Monitor your sender reputation and delivery rates</li>
+          <li>• Always verify sender domains with your SMTP provider</li>
         </ul>
       </div>
     </div>

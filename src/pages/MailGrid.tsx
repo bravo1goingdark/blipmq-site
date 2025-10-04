@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Terminal, Database, Zap, Filter, FileText, CalendarClock, Monitor } from 'lucide-react';
+import { Terminal, Database, Zap, Filter, FileText, CalendarClock, Monitor, Shield, Globe } from 'lucide-react';
 
 const MailGrid = () => {
     return (
@@ -86,7 +86,7 @@ const MailGrid = () => {
                         Built-in Superpowers 🚀
                     </motion.h3>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -137,6 +137,32 @@ const MailGrid = () => {
                             </div>
                             <h4 className="font-semibold text-gray-900 dark:text-dark-foreground mb-2">Smart Scheduling</h4>
                             <p className="text-xs text-gray-600 dark:text-dark-muted">Cron jobs and timezone awareness</p>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.7, duration: 0.4 }}
+                            className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-900/10 dark:to-teal-900/10 border border-emerald-200 dark:border-emerald-800/30 rounded-lg p-4 text-center"
+                        >
+                            <div className="p-2 bg-emerald-100 dark:bg-emerald-900/20 rounded-full w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+                                <span className="text-emerald-600 dark:text-emerald-400 text-lg font-bold">🔑</span>
+                            </div>
+                            <h4 className="font-semibold text-gray-900 dark:text-dark-foreground mb-2">BYOK Support</h4>
+                            <p className="text-xs text-gray-600 dark:text-dark-muted">Bring Your Own SMTP Keys - any provider</p>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.8, duration: 0.4 }}
+                            className="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-900/10 dark:to-pink-900/10 border border-rose-200 dark:border-rose-800/30 rounded-lg p-4 text-center"
+                        >
+                            <div className="p-2 bg-rose-100 dark:bg-rose-900/20 rounded-full w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+                                <span className="text-rose-600 dark:text-rose-400 text-lg font-bold">🎨</span>
+                            </div>
+                            <h4 className="font-semibold text-gray-900 dark:text-dark-foreground mb-2">High Delivery</h4>
+                            <p className="text-xs text-gray-600 dark:text-dark-muted">99.7% delivery rate with smart retries</p>
                         </motion.div>
                     </div>
                 </div>
@@ -395,9 +421,10 @@ const MailGrid = () => {
             <section className="max-w-6xl mx-auto px-4 py-16">
                 <div className="text-center mb-12">
                     <span className="text-xs font-semibold uppercase text-green-600 tracking-wide">✨ Ready to Start</span>
-                    <h2 className="mt-2 text-4xl font-bold text-gray-900 dark:text-dark-foreground">Download CLI & Get Started</h2>
+                    <h2 className="mt-2 text-4xl font-bold text-gray-900 dark:text-dark-foreground">Download Free CLI & Get Started</h2>
                     <p className="mt-3 text-gray-600 dark:text-dark-muted text-sm max-w-xl mx-auto">
-                        Start with the powerful CLI version - everything you need to orchestrate email campaigns from CSV files and Google Sheets.
+                        Start with the powerful <strong>free CLI version</strong> - everything you need to orchestrate email campaigns from CSV files and Google Sheets. 
+                        The visual UI is a paid product currently under development.
                     </p>
                 </div>
 
@@ -411,7 +438,7 @@ const MailGrid = () => {
                     >
                         <div className="absolute -top-3 left-8">
                             <span className="bg-green-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-sm">
-                                🎆 FREE & OPEN SOURCE
+                                🎆 FREE FOREVER - BSD-3 LICENSE
                             </span>
                         </div>
                         <div className="flex items-center justify-center mb-8 mt-4">
@@ -576,9 +603,17 @@ const MailGrid = () => {
                                     <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Cloud Only</td>
                                     <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Cloud Only</td>
                                 </tr>
+                                <tr className="border-b border-gray-100 dark:border-gray-800">
+                                    <td className="p-4 font-medium text-gray-900 dark:text-dark-foreground">BYOK (Bring Your Own Keys)</td>
+                                    <td className="text-center p-4 bg-green-50 dark:bg-green-900/10 text-green-700 dark:text-green-400 font-semibold">✓ Any SMTP Provider</td>
+                                    <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Vendor Lock</td>
+                                    <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Vendor Lock</td>
+                                    <td className="text-center p-4 text-yellow-600 dark:text-yellow-400">⚠ AWS Only</td>
+                                    <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Vendor Lock</td>
+                                </tr>
                                 <tr>
                                     <td className="p-4 font-medium text-gray-900 dark:text-dark-foreground">Open Source</td>
-                                    <td className="text-center p-4 bg-green-50 dark:bg-green-900/10 text-green-700 dark:text-green-400 font-semibold">✓ MIT License</td>
+                                    <td className="text-center p-4 bg-green-50 dark:bg-green-900/10 text-green-700 dark:text-green-400 font-semibold">✓ BSD-3 License</td>
                                     <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Proprietary</td>
                                     <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Proprietary</td>
                                     <td className="text-center p-4 text-red-600 dark:text-red-400">✗ Proprietary</td>
@@ -599,9 +634,9 @@ const MailGrid = () => {
             <section className="max-w-6xl mx-auto px-4 py-16">
                 <div className="text-center mb-12">
                     <span className="text-xs font-semibold uppercase text-purple-600 tracking-wide">🚀 What's Next</span>
-                    <h2 className="mt-2 text-4xl font-bold text-gray-900 dark:text-dark-foreground">MailGrid UI Coming Soon</h2>
+                    <h2 className="mt-2 text-4xl font-bold text-gray-900 dark:text-dark-foreground">MailGrid UI - Paid Version Under Development</h2>
                     <p className="mt-3 text-gray-600 dark:text-dark-muted text-sm max-w-2xl mx-auto">
-                        Beautiful desktop UI built with Wails + React + TailwindCSS + Framer Motion. Brings all of MailGrid's power to a visual interface with powerful local-first control. Perfect for teams and non-technical users.
+                        Beautiful desktop UI built with Wails + React + TailwindCSS + Framer Motion. This will be a <strong>paid product</strong> that brings all of MailGrid's CLI power to a visual interface. Perfect for teams and non-technical users who prefer GUI over command line.
                     </p>
                 </div>
 
@@ -619,7 +654,7 @@ const MailGrid = () => {
                         <div className="relative z-10">
                             <div className="absolute -top-3 left-8">
                                 <span className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-sm">
-                                    🎨 DESKTOP APPLICATION
+                                    💼 PAID DESKTOP APP - IN DEVELOPMENT
                                 </span>
                             </div>
                             
@@ -748,6 +783,24 @@ const features = [
         title: "Preview & Dry-run",
         description: "Local preview server and safe dry-run rendering for debugging templates",
         color: "text-red-600 dark:text-red-400"
+    },
+    {
+        icon: Terminal,
+        title: "BYOK (Bring Your Own Keys)",
+        description: "Use your own SMTP credentials with any provider - AWS SES, SendGrid, Mailgun, or personal servers",
+        color: "text-emerald-600 dark:text-emerald-400"
+    },
+    {
+        icon: Shield,
+        title: "Security & Privacy",
+        description: "Local-first approach - your data never leaves your machine, encrypted storage, and secure credential handling",
+        color: "text-orange-600 dark:text-orange-400"
+    },
+    {
+        icon: Globe,
+        title: "Cross-Platform Support",
+        description: "Native binaries for Windows, macOS, Linux, FreeBSD - single executable with zero dependencies",
+        color: "text-teal-600 dark:text-teal-400"
     }
 ];
 
