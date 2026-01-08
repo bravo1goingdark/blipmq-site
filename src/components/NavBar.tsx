@@ -78,6 +78,16 @@ const NavBar = () => {
                                     >
                                         MailGrid
                                     </Link>
+                                    <Link
+                                        to="/ucfp"
+                                        onClick={() => {
+                                            trackEvent('click', 'navigation', 'ucfp_link');
+                                            setShowProductDropdown(false);
+                                        }}
+                                        className="block px-3 py-2 text-sm text-left rounded-md text-gray-700 dark:text-dark-muted hover:text-black dark:hover:text-dark-foreground hover:bg-gray-100 dark:hover:bg-dark-hover transition"
+                                    >
+                                        UCFP
+                                    </Link>
                                 </div>
                             )}
                         </div>
@@ -175,6 +185,17 @@ const NavBar = () => {
                             className="block px-3 py-2 rounded-md text-gray-700 dark:text-dark-muted hover:text-black dark:hover:text-dark-foreground hover:bg-gray-100 dark:hover:bg-dark-hover transition"
                         >
                             MailGrid
+                        </Link>
+
+                        <Link
+                            to="/ucfp"
+                            onClick={() => {
+                                trackEvent('click', 'navigation', 'ucfp_link_mobile');
+                                setIsOpen(false);
+                            }}
+                            className="block px-3 py-2 rounded-md text-gray-700 dark:text-dark-muted hover:text-black dark:hover:text-dark-foreground hover:bg-gray-100 dark:hover:bg-dark-hover transition"
+                        >
+                            UCFP
                         </Link>
 
                         <button

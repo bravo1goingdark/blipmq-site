@@ -59,7 +59,7 @@ export default function Highlights() {
 
     return (
         <section
-            className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 md:px-12 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 md:px-12 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
 
             {showModal && (
                 <motion.div

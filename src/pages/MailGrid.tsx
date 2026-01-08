@@ -5,7 +5,7 @@ const MailGrid = () => {
     return (
         <>
             {/* Hero Section */}
-            <section className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 md:px-12 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <section className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 md:px-12 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
                 <div>
                     <motion.div
                         initial={{ opacity: 0, y: -30 }}
